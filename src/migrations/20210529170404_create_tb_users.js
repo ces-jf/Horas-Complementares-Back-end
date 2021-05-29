@@ -4,7 +4,7 @@ exports.up = (knex) => {
         t.increments('id').primary();
         t.string('registration').notNull().unique();
         t.string('name').notNull();
-        t.string('mail').notNull().unique();
+        t.string('email').notNull().unique();
         t.string('passwd').notNull();
     });
 };
