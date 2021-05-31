@@ -26,8 +26,8 @@ public class UserType implements Serializable {
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "USER_TYPEUSER",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "userType_id")
+			joinColumns = @JoinColumn(name = "userType_id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id")
 	)
 	private List<User> users = new ArrayList<>();
 	

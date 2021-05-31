@@ -24,7 +24,7 @@ public class Activity implements Serializable{
 	private Long id;
 	private String name;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date start;
 	
 	private Double workload;

@@ -188,10 +188,40 @@ public class AtivcomplApplication implements CommandLineRunner{
 		userTipo3.getUsers().addAll(Arrays.asList(user8));
 		userTipo4.getUsers().addAll(Arrays.asList(user8, user9, user10, user11, user12, user13, user14, user15, user16, user17, user18, user19, user20));
 		
+		user1.getCourses().addAll(Arrays.asList(crs1, crs2));
+		user2.getCourses().addAll(Arrays.asList(crs1, crs2));
+		user3.getCourses().addAll(Arrays.asList(crs3));
+		user4.getCourses().addAll(Arrays.asList(crs3));
+		user5.getCourses().addAll(Arrays.asList(crs4, crs5));
+		user6.getCourses().addAll(Arrays.asList(crs4, crs5));
+		user7.getCourses().addAll(Arrays.asList(crs6, crs7));
+		// Alunos
+		user8.getCourses().addAll(Arrays.asList(crs1));
+		user9.getCourses().addAll(Arrays.asList(crs1));
+		user10.getCourses().addAll(Arrays.asList(crs2));
+		user11.getCourses().addAll(Arrays.asList(crs2));
+		user12.getCourses().addAll(Arrays.asList(crs3));
+		user13.getCourses().addAll(Arrays.asList(crs3));
+		user14.getCourses().addAll(Arrays.asList(crs3));
+		user15.getCourses().addAll(Arrays.asList(crs4));
+		user16.getCourses().addAll(Arrays.asList(crs4));
+		user17.getCourses().addAll(Arrays.asList(crs5));
+		user18.getCourses().addAll(Arrays.asList(crs5));
+		user19.getCourses().addAll(Arrays.asList(crs6));
+		user20.getCourses().addAll(Arrays.asList(crs7));
+		
+		crs1.getUsers().addAll(Arrays.asList(user1, user2, user8, user9));
+		crs2.getUsers().addAll(Arrays.asList(user1, user2, user10, user11));
+		crs3.getUsers().addAll(Arrays.asList(user3, user4, user12, user13, user14));
+		crs4.getUsers().addAll(Arrays.asList(user5, user6, user15, user16));
+		crs5.getUsers().addAll(Arrays.asList(user5, user6, user17, user18));
+		crs6.getUsers().addAll(Arrays.asList(user7, user19));
+		crs7.getUsers().addAll(Arrays.asList(user7, user20));
+		
 		cmp1.getCourses().addAll(Arrays.asList(crs1, crs2, crs3));
 		cmp2.getCourses().addAll(Arrays.asList(crs4, crs5));
 		cmp3.getCourses().addAll(Arrays.asList(crs6, crs7));
-	
+		
 		
 		addressRepository.saveAll(Arrays.asList(addr8, addr9, addr10, addr11, addr12, addr13, addr14, addr15, addr16, addr17, addr18, addr19, addr20));
 		userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12, user13, user14, user15, user16, user17, user18, user19, user20));

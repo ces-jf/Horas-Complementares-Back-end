@@ -33,8 +33,8 @@ public class Course implements Serializable{
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "USER_COURSE",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "course_id")
+			joinColumns = @JoinColumn(name = "course_id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id")
 	)
 	private List<User> users = new ArrayList<>();
 	
