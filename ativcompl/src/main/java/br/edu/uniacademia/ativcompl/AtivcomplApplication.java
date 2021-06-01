@@ -77,9 +77,9 @@ public class AtivcomplApplication implements CommandLineRunner{
 		// Supervisor: "Administração"
 		User user4 = new User(null, "420.790.053-59", "Joana Carolina Souza", "joanacarolinasouza@jbtc.com", "4ld5o8RYYb"); 
 
-		// Coordenador: "NuserTiporição" e "Fisioterapia"
+		// Coordenador: "Nutrição" e "Fisioterapia"
 		User user5 = new User(null, "169.588.437-03", "Bernardo Anthony Davi Drumond", "bernardoanthonydavidrumond-77@raya3.com.br", "W2BRb4G4Qz");
-		// Supervisor: "NuserTiporição" e "Fisioterapia"
+		// Supervisor: "Nutrição" e "Fisioterapia"
 		User user6 = new User(null, "272.659.622-30", "Isabel Renata Agatha Pinto", "isabelrenataagathapinto@charquesorocaba.com.br", "ILyZyTXflo");
 
 		// Coordenador: "Teologia" e "Filosofia"
@@ -103,7 +103,7 @@ public class AtivcomplApplication implements CommandLineRunner{
 		User user13 = new User(null, "759.012.025-11", "Milena Nicole Ester Melo", "milenanicoleestermelo-70@ouserTipolock.com", "KiDJmNXmd4");
 		User user14 = new User(null, "558.108.283-96", "Ruan Pedro Viana", "ruanpedroviana..ruanpedroviana@anbima.com.br", "QP8Eg0Y7Pw");
 		
-		// "NuserTiporição"
+		// "Nutrição"
 		User user15 = new User(null, "020.984.203-23", "Lucas Oliver das Neves", "lucasoliverdasneves__lucasoliverdasneves@zoomfoccus.com.br", "FoeKiXm0ZB");
 		User user16 = new User(null, "955.586.448-93", "Tomás Paulo Jesus", "ttomaspaulojesus@nelsoncosta.com.br", "N05yZtdyMU");
 		
@@ -129,7 +129,7 @@ public class AtivcomplApplication implements CommandLineRunner{
 		Course crs1 = new Course(null, "Sistemas de Informação", 216.0, cmp1);
 		Course crs2 = new Course(null, "Engenharia de Software", 144.0, cmp1);
 		Course crs3 = new Course(null, "Administração", 216.0, cmp1);
-		Course crs4 = new Course(null, "NuserTiporição", 320.0, cmp2);
+		Course crs4 = new Course(null, "Nutrição", 320.0, cmp2);
 		Course crs5 = new Course(null, "Fisioterapia", 180.0, cmp2);
 		Course crs6 = new Course(null, "Teologia", 320.0, cmp3);
 		Course crs7 = new Course(null, "Filosofia", 180.0, cmp3);

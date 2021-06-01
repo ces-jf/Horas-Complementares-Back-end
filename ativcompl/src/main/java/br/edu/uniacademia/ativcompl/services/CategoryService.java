@@ -43,7 +43,7 @@ public class CategoryService {
 		try {
 			repo.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-			 throw new DataIntegrityException("Não foi possível excluir uma Categoria que está sendo referenciada em Atividades.");
+			 throw new DataIntegrityException("Não é possível excluir uma Categoria que está sendo referenciada em Atividades.");
 		}
 	}
 	
