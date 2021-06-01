@@ -3,10 +3,12 @@ package br.edu.uniacademia.ativcompl.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.edu.uniacademia.ativcompl.domain.Category;
 import br.edu.uniacademia.ativcompl.repositories.CategoryRepository;
+import br.edu.uniacademia.ativcompl.services.exceptions.DataIntegrityException;
 import br.edu.uniacademia.ativcompl.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -29,6 +31,15 @@ public class CategoryService {
 	public Category update(Category obj) {
 		find(obj.getId());
 		return repo.save(obj);
+	}
+	
+	public void delete(Long id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			 throw new DataIntegrityException("Não é possível excluir uma Categoria que está sendo referenciada em Atividades");
+		}
 	}
 
 }
