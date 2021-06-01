@@ -1,5 +1,6 @@
 package br.edu.uniacademia.ativcompl.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,10 @@ public class CategoryService {
 		} catch (DataIntegrityViolationException e) {
 			 throw new DataIntegrityException("Não é possível excluir uma Categoria que está sendo referenciada em Atividades");
 		}
+	}
+	
+	public List<Category> findAll(){
+		return repo.findAll();
 	}
 
 }
