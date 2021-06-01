@@ -1,26 +1,69 @@
 package br.edu.uniacademia.ativcompl.resources;
 
+import java.net.URI;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.edu.uniacademia.ativcompl.domain.UserType;
 import br.edu.uniacademia.ativcompl.services.UserTypeService;
 
 @RestController
-@RequestMapping(value="/usertype")
+@RequestMapping(value="/usertypes")
 public class UserTypeResource {
 	
 	@Autowired
 	private UserTypeService service;
 
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Long id) {
+	public ResponseEntity<UserType> find(@PathVariable Long id) {
 		UserType obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
-		
 	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody UserType obj){
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody UserType obj, @PathVariable Long id){
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public ResponseEntity<List<UserType>> findAll() {
+		List<UserType> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
+	public ResponseEntity<Page<UserType>> findPage(
+			@RequestParam(value = "page", defaultValue = "0") Integer page, 
+			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage, 
+			@RequestParam(value = "orderBy", defaultValue = "type")String orderBy, 
+			@RequestParam(value = "direction", defaultValue = "ASC")String direction) {
+		Page<UserType> list = service.findPage(page, linesPerPage, orderBy, direction);
+		return ResponseEntity.ok().body(list);
+	}	
 }
