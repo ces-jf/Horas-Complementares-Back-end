@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -73,7 +71,6 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
