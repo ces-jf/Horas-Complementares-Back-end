@@ -1,6 +1,6 @@
 package br.edu.uniacademia.ativcompl.domain.enums;
 
-public enum ValuetionEnum {
+public enum ValuationEnum {
 
 	ACEITAR(1, "Aceito"),
 	NEGAR_PARCIAL(2, "Negado parcialmente"),
@@ -9,7 +9,7 @@ public enum ValuetionEnum {
 	private int cod;
 	private String description;
 	
-	private ValuetionEnum(int cod, String description) {
+	private ValuationEnum(int cod, String description) {
 		this.cod = cod;
 		this.description = description;
 	}
@@ -22,11 +22,11 @@ public enum ValuetionEnum {
 		return description;
 	}
 	
-	public static ValuetionEnum toEnum(Integer cod) {
+	public static ValuationEnum toEnum(Integer cod) {
 		
 		if(cod == null) { return null;}
 		
-		for(ValuetionEnum x : ValuetionEnum.values()) {
+		for(ValuationEnum x : ValuationEnum.values()) {
 			if(cod.equals(x.getCod())) {
 				return x;
 			}

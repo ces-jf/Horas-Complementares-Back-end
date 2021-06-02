@@ -17,7 +17,7 @@ import br.edu.uniacademia.ativcompl.domain.Student;
 import br.edu.uniacademia.ativcompl.domain.User;
 import br.edu.uniacademia.ativcompl.domain.UserType;
 import br.edu.uniacademia.ativcompl.domain.Valuation;
-import br.edu.uniacademia.ativcompl.domain.enums.ValuetionEnum;
+import br.edu.uniacademia.ativcompl.domain.enums.ValuationEnum;
 import br.edu.uniacademia.ativcompl.repositories.ActivityRepository;
 import br.edu.uniacademia.ativcompl.repositories.AddressRepository;
 import br.edu.uniacademia.ativcompl.repositories.CampusRepository;
@@ -165,8 +165,8 @@ public class AtivcomplApplication implements CommandLineRunner{
 		Activity at3 = new Activity(null, "Curso de PHP", sdf.parse("20/04/2021"), 6.0, 6.0, true, "abc12es381a", stu3,  cat6);
 		Activity at4 = new Activity(null, "Palestra Senhor dos Aneis", sdf.parse("28/08/2021"), 3.0, 3.0, true, "25e23rty31hj", stu4, cat4);
 		
-		Valuation valuation1 = new Valuation(null, ValuetionEnum.ACEITAR, "Muito bom", at4);
-		Valuation valuation2 = new Valuation(null, ValuetionEnum.NEGAR_TOTAL, "Essa palestra não condiz com o curso", at3);
+		Valuation valuation1 = new Valuation(null, ValuationEnum.ACEITAR, "Muito bom", at4);
+		Valuation valuation2 = new Valuation(null, ValuationEnum.NEGAR_TOTAL, "Essa palestra não condiz com o curso", at3);
 			
 		user1.getUsersTypes().addAll(Arrays.asList(userTipo1));
 		user2.getUsersTypes().addAll(Arrays.asList(userTipo2));

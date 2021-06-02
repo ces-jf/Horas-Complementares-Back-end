@@ -8,7 +8,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-import br.edu.uniacademia.ativcompl.domain.enums.ValuetionEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.edu.uniacademia.ativcompl.domain.enums.ValuationEnum;
 
 @Entity
 public class Valuation implements Serializable{
@@ -19,6 +21,7 @@ public class Valuation implements Serializable{
 	private Integer valuation;
 	private String justification;
 
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "activity_id")
 	@MapsId
@@ -26,7 +29,7 @@ public class Valuation implements Serializable{
 	
 	public Valuation() {}
 
-	public Valuation(Long id, ValuetionEnum valuation, String justification, Activity activity) {
+	public Valuation(Long id, ValuationEnum valuation, String justification, Activity activity) {
 		super();
 		this.id = id;
 		this.valuation = (valuation == null) ? null : valuation.getCod();
@@ -42,11 +45,11 @@ public class Valuation implements Serializable{
 		this.id = id;
 	}
 
-	public ValuetionEnum getValuation() {
-		return ValuetionEnum.toEnum(valuation);
+	public ValuationEnum getValuation() {
+		return ValuationEnum.toEnum(valuation);
 	}
 
-	public void setValuation(ValuetionEnum valuation) {
+	public void setValuation(ValuationEnum valuation) {
 		this.valuation = valuation.getCod();
 	}
 

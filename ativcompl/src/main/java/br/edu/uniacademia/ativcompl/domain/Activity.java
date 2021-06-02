@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Activity implements Serializable{
@@ -32,7 +31,6 @@ public class Activity implements Serializable{
 	private Boolean closed;
 	private String certificate;
 	
-	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "activity")
 	private Valuation valuation;
 
