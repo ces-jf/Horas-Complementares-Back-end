@@ -48,6 +48,8 @@ public class AtivcomplApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
 //		Address addr1 = new Address(null, "Rua I", "621", "Jardim Itália II", "Uberaba"); 
 //		Address addr2 = new Address(null, "Rua Primavera", "560", "Baixa da Colina", "Rio Branco");
 //		Address addr3 = new Address(null, "Rua Major Izidoro Jerônimo da Rocha", "450","Jacarecica", "Maceió");
@@ -144,21 +146,21 @@ public class AtivcomplApplication implements CommandLineRunner{
 		Category cat5 = new Category(null, "Curso de Línguas");
 		Category cat6 = new Category(null, "Curso de Programação");
 
-		Student stu1 = new Student(null, user8, addr8);
-		Student stu2 = new Student(null, user9, addr9);
-		Student stu3 = new Student(null, user10, addr10);
-		Student stu4 = new Student(null, user11, addr11);
-		Student stu5 = new Student(null, user12, addr12);
-		Student stu6 = new Student(null, user13, addr13);
-		Student stu7 = new Student(null, user14, addr14);
-		Student stu8 = new Student(null, user15, addr15);
-		Student stu9 = new Student(null, user16, addr16);
-		Student stu10 = new Student(null, user17, addr17);
-		Student stu11 = new Student(null, user18, addr18);
-		Student stu12 = new Student(null, user19, addr19);
-		Student stu13 = new Student(null, user20, addr20);
+		Student stu1 = new Student(null, sdf.parse("02/02/2018"), user8, addr8);
+		Student stu2 = new Student(null, sdf.parse("02/02/2020"), user9, addr9);
+		Student stu3 = new Student(null, sdf.parse("02/08/2017"), user10, addr10);
+		Student stu4 = new Student(null, sdf.parse("02/08/2019"), user11, addr11);
+		Student stu5 = new Student(null, sdf.parse("02/02/2019"), user12, addr12);
+		Student stu6 = new Student(null, sdf.parse("02/08/2020"), user13, addr13);
+		Student stu7 = new Student(null, sdf.parse("02/02/2021"), user14, addr14);
+		Student stu8 = new Student(null, sdf.parse("02/08/2019"), user15, addr15);
+		Student stu9 = new Student(null, sdf.parse("02/08/2018"), user16, addr16);
+		Student stu10 = new Student(null, sdf.parse("02/08/2019"), user17, addr17);
+		Student stu11 = new Student(null, sdf.parse("02/02/2017"), user18, addr18);
+		Student stu12 = new Student(null, sdf.parse("02/02/2018"), user19, addr19);
+		Student stu13 = new Student(null, sdf.parse("02/08/2018"), user20, addr20);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
 		
 		Activity at1 = new Activity(null, "Curso de Phyton", sdf.parse("15/05/2021"), 12.0, 5.0, false, "", stu1, cat6);
 		Activity at2 = new Activity(null, "Curso de Inglês", sdf.parse("20/02/2020"), 1200.0, 640.0, false, "", stu2, cat5);

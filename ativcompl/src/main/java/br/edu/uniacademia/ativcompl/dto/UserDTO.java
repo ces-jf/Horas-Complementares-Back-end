@@ -2,7 +2,10 @@ package br.edu.uniacademia.ativcompl.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import br.edu.uniacademia.ativcompl.domain.User;
 
@@ -15,7 +18,11 @@ public class UserDTO implements Serializable {
 	private String registration;
 	
 	@NotEmpty(message = "O campo não pode estar em branco")
+	@Length(min = 3, max = 150, message = "O tamanho deve ser entre 3 e 150 caracteres")
 	private String name;
+	
+	@NotEmpty(message = "O campo não pode estar em branco")
+	@Email(message = "Email inválido")
 	private String email;
 	private String password;
 	

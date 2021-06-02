@@ -2,6 +2,7 @@ package br.edu.uniacademia.ativcompl.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +22,9 @@ public class Student implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+	private Date startCourse;
 	
 	@OneToOne
 	@JoinColumn(name = "user_id")
@@ -33,9 +39,10 @@ public class Student implements Serializable {
 	
 	public Student() {	}
 
-	public Student(Long id, User user, Address address) {
+	public Student(Long id, Date startCourse, User user, Address address) {
 		super();
 		this.id = id;
+		this.startCourse = startCourse;
 		this.user = user;
 		this.address = address;
 	}
@@ -46,6 +53,14 @@ public class Student implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public Date getStartCourse() {
+		return startCourse;
+	}
+
+	public void setStartCourse(Date startCourse) {
+		this.startCourse = startCourse;
 	}
 
 	public User getUser() {
