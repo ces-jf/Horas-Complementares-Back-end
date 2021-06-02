@@ -2,16 +2,24 @@ package br.edu.uniacademia.ativcompl.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 import br.edu.uniacademia.ativcompl.domain.User;
 
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@NotEmpty(message = "O campo não pode estar em branco")
 	private String registration;
+	
+	@NotEmpty(message = "O campo não pode estar em branco")
 	private String name;
 	private String email;
-				
+	private String password;
+	
+	
 	public UserDTO() {}
 	
 	public UserDTO(User obj) {
@@ -19,6 +27,7 @@ public class UserDTO implements Serializable {
 		this.registration = obj.getRegistration();
 		this.name = obj.getName();
 		this.email = obj.getEmail();
+		this.password = obj.getPassword();
 	}
 
 	public Long getId() {
@@ -52,5 +61,13 @@ public class UserDTO implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+		
 }

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.edu.uniacademia.ativcompl.domain.User;
+import br.edu.uniacademia.ativcompl.dto.UserDTO;
 import br.edu.uniacademia.ativcompl.repositories.UserRepository;
 import br.edu.uniacademia.ativcompl.services.exceptions.DataIntegrityException;
 import br.edu.uniacademia.ativcompl.services.exceptions.ObjectNotFoundException;
@@ -62,4 +63,9 @@ public class UserService {
 		newObj.setRegistration(obj.getRegistration());
 		newObj.setPassword(obj.getPassword());
 	}
+	
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getRegistration(), objDto.getName(), objDto.getEmail(), objDto.getPassword());
+	}
+
 }
