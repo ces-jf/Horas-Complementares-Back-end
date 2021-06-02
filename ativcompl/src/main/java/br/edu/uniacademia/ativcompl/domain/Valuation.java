@@ -8,8 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.edu.uniacademia.ativcompl.domain.enums.ValuetionEnum;
 
 @Entity
@@ -21,7 +19,6 @@ public class Valuation implements Serializable{
 	private Integer valuation;
 	private String justification;
 
-	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "activity_id")
 	@MapsId

@@ -6,7 +6,6 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.edu.uniacademia.ativcompl.domain.Activity;
-import br.edu.uniacademia.ativcompl.domain.enums.ValuetionEnum;
 
 public class ActivityDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -21,8 +20,6 @@ public class ActivityDTO implements Serializable{
 	private Double hoursCompleted;
 	private Boolean closed;
 	private String certificate;
-	private Integer valuation;
-	private String justification;
 	
 	public ActivityDTO() {}
 	
@@ -90,22 +87,6 @@ public class ActivityDTO implements Serializable{
 
 	public void setCertificate(String certificate) {
 		this.certificate = certificate;
-	}
-
-	public ValuetionEnum getValuation() {
-		return ValuetionEnum.toEnum(valuation);
-	}
-
-	public void setValuation(ValuetionEnum valuation) {
-		this.valuation = valuation.getCod();
-	}
-
-	public String getJustification() {
-		return justification;
-	}
-
-	public void setJustification(String justification) {
-		this.justification = justification;
 	}
 	
 }
