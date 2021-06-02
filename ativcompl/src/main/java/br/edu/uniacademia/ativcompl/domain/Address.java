@@ -30,6 +30,14 @@ public class Address implements Serializable {
 		this.district = district;
 		this.city = city;
 	}
+	
+	public Address(String street, String number, String district, String city) {
+		super();
+		this.street = street;
+		this.number = number;
+		this.district = district;
+		this.city = city;
+	}
 
 	public Long getId() {
 		return id;

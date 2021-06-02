@@ -23,7 +23,7 @@ public class User implements Serializable {
 	private String password;
 				
 	@ManyToMany(mappedBy = "users")
-	private List<UserType> usersTypes = new ArrayList<>();
+	private List<UserType> userTypeList = new ArrayList<>();
 	
 	@ManyToMany(mappedBy = "users")
 	private List<Course> courses = new ArrayList<>();
@@ -33,6 +33,14 @@ public class User implements Serializable {
 	public User(Long id, String registration, String name, String email, String password) {
 		super();
 		this.id = id;
+		this.registration = registration;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+	
+	public User(String registration, String name, String email, String password) {
+		super();
 		this.registration = registration;
 		this.name = name;
 		this.email = email;
@@ -79,12 +87,12 @@ public class User implements Serializable {
 		this.password = password;
 	}
 		
-	public List<UserType> getUsersTypes() {
-		return usersTypes;
+	public List<UserType> getUserTypeList() {
+		return userTypeList;
 	}
 
-	public void setUsersTypes(List<UserType> usersTypes) {
-		this.usersTypes = usersTypes;
+	public void setUserTypeList(List<UserType> userTypeList) {
+		this.userTypeList = userTypeList;
 	}
 
 	public List<Course> getCourses() {

@@ -20,24 +20,25 @@ public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date startCourse;
-	
+
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
-		
+
 	@OneToMany(mappedBy = "student")
 	private List<Activity> activities = new ArrayList<>();
-	
-	public Student() {	}
+
+	public Student() {
+	}
 
 	public Student(Long id, Date startCourse, User user, Address address) {
 		super();
@@ -46,7 +47,14 @@ public class Student implements Serializable {
 		this.user = user;
 		this.address = address;
 	}
-	
+
+	public Student(Date startCourse, User user, Address address) {
+		super();
+		this.startCourse = startCourse;
+		this.user = user;
+		this.address = address;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -54,7 +62,7 @@ public class Student implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public Date getStartCourse() {
 		return startCourse;
 	}
@@ -69,7 +77,7 @@ public class Student implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
-	}	
+	}
 
 	public Address getAddress() {
 		return address;
@@ -103,5 +111,5 @@ public class Student implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

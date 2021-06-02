@@ -50,77 +50,77 @@ public class AtivcomplApplication implements CommandLineRunner{
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
-//		Address addr1 = new Address(null, "Rua I", "621", "Jardim Itália II", "Uberaba"); 
-//		Address addr2 = new Address(null, "Rua Primavera", "560", "Baixa da Colina", "Rio Branco");
-//		Address addr3 = new Address(null, "Rua Major Izidoro Jerônimo da Rocha", "450","Jacarecica", "Maceió");
-//		Address addr4 = new Address(null, "Quadra SHIN QI 2", "581", "Setor de Habitações Individuais Norte", "Brasília");
-//		Address addr5 = new Address(null, "Rua Monte Sião", "967", "Tarumã", "Manaus");
-//		Address addr6 = new Address(null, "Quadra QRSW 5 Bloco A-3", "604", "Setor Sudoeste", "Brasília");
-//		Address addr7 = new Address(null, "Rua Noé Fortes", "519", "Uruguai", "Teresina");
-		Address addr8 = new Address(null, "Rua Dom Luiz", "970", "Centro", "Belo Jardim");
-		Address addr9 = new Address(null, "Alameda do Lago", "608", "Posse", "Teresópolis");
-		Address addr10 = new Address(null, "Rua J", "914", "Nova Cidade", "Manaus");
-		Address addr11 = new Address(null, "Rua H", "854", "Alto Maron", "Vitória da Conquista");
-		Address addr12 = new Address(null, "Vila Militar", "817", "Tambauzinho", "João Pessoa");
-		Address addr13 = new Address(null, "Rua Alemanha", "546", "Loteamento Menino Jesus I", "Sinop");
-		Address addr14 = new Address(null, "Rua Pinheiro Machado", "650", "Cidade Alta", "Alegrete");
-		Address addr15 = new Address(null, "Rua Juvêncio Hilário de Santana", "767", "Bugio", "Aracaju");
-		Address addr16 = new Address(null, "Rua Zabaram", "647", "Jorge Teixeira", "Manaus");
-		Address addr17 = new Address(null, "Rodovia BR-364", "672", "Eletronorte", "Porto Velho");
-		Address addr18 = new Address(null, "Quadra CLS 110 Bloco B", "986", "Asa Sul", "Brasília");
-		Address addr19 = new Address(null, "Rua Severina Batista Andrade Goulart", "657", "Novo Horizonte", "Crato");
-		Address addr20 = new Address(null, "Rua Gravataí", "864", "Potengi", "Natal");
+//		Address addr1 = new Address("Rua I", "621", "Jardim Itália II", "Uberaba"); 
+//		Address addr2 = new Address("Rua Primavera", "560", "Baixa da Colina", "Rio Branco");
+//		Address addr3 = new Address("Rua Major Izidoro Jerônimo da Rocha", "450","Jacarecica", "Maceió");
+//		Address addr4 = new Address("Quadra SHIN QI 2", "581", "Setor de Habitações Individuais Norte", "Brasília");
+//		Address addr5 = new Address("Rua Monte Sião", "967", "Tarumã", "Manaus");
+//		Address addr6 = new Address("Quadra QRSW 5 Bloco A-3", "604", "Setor Sudoeste", "Brasília");
+//		Address addr7 = new Address("Rua Noé Fortes", "519", "Uruguai", "Teresina");
+		Address addr8 = new Address("Rua Dom Luiz", "970", "Centro", "Belo Jardim");
+		Address addr9 = new Address("Alameda do Lago", "608", "Posse", "Teresópolis");
+		Address addr10 = new Address("Rua J", "914", "Nova Cidade", "Manaus");
+		Address addr11 = new Address("Rua H", "854", "Alto Maron", "Vitória da Conquista");
+		Address addr12 = new Address("Vila Militar", "817", "Tambauzinho", "João Pessoa");
+		Address addr13 = new Address("Rua Alemanha", "546", "Loteamento Menino Jesus I", "Sinop");
+		Address addr14 = new Address("Rua Pinheiro Machado", "650", "Cidade Alta", "Alegrete");
+		Address addr15 = new Address("Rua Juvêncio Hilário de Santana", "767", "Bugio", "Aracaju");
+		Address addr16 = new Address("Rua Zabaram", "647", "Jorge Teixeira", "Manaus");
+		Address addr17 = new Address("Rodovia BR-364", "672", "Eletronorte", "Porto Velho");
+		Address addr18 = new Address("Quadra CLS 110 Bloco B", "986", "Asa Sul", "Brasília");
+		Address addr19 = new Address("Rua Severina Batista Andrade Goulart", "657", "Novo Horizonte", "Crato");
+		Address addr20 = new Address("Rua Gravataí", "864", "Potengi", "Natal");
 				
 		
 		// Coordenador: "Sistemas de Informação" e "Engenharia de Software"
-		User user1 = new User(null, "375.577.622-74", "Vitória Carolina Barbosa", "vitoriacarolinabarbosa-96@lphbrasil.com.br", "UQk4wSoai7");
+		User user1 = new User("375.577.622-74", "Vitória Carolina Barbosa", "vitoriacarolinabarbosa-96@lphbrasil.com.br", "UQk4wSoai7");
 		// Supervisor: "Sistemas de Informação" e "Engenharia de Software"
-		User user2 = new User(null, "124.906.495-31", "Guilherme Samuel Pires", "guilhermesamuelpires@cedda.com.br", "1XbTTe9udg");
+		User user2 = new User("124.906.495-31", "Guilherme Samuel Pires", "guilhermesamuelpires@cedda.com.br", "1XbTTe9udg");
 		
 		// Coordenador: "Administração"
-		User user3 = new User(null, "441.377.809-00", "Agatha Brenda Moreira", "agathabrendamoreira@pubdesign.com.br", "p4x2RimGji");
+		User user3 = new User("441.377.809-00", "Agatha Brenda Moreira", "agathabrendamoreira@pubdesign.com.br", "p4x2RimGji");
 		// Supervisor: "Administração"
-		User user4 = new User(null, "420.790.053-59", "Joana Carolina Souza", "joanacarolinasouza@jbtc.com", "4ld5o8RYYb"); 
+		User user4 = new User("420.790.053-59", "Joana Carolina Souza", "joanacarolinasouza@jbtc.com", "4ld5o8RYYb"); 
 
 		// Coordenador: "Nutrição" e "Fisioterapia"
-		User user5 = new User(null, "169.588.437-03", "Bernardo Anthony Davi Drumond", "bernardoanthonydavidrumond-77@raya3.com.br", "W2BRb4G4Qz");
+		User user5 = new User("169.588.437-03", "Bernardo Anthony Davi Drumond", "bernardoanthonydavidrumond-77@raya3.com.br", "W2BRb4G4Qz");
 		// Supervisor: "Nutrição" e "Fisioterapia"
-		User user6 = new User(null, "272.659.622-30", "Isabel Renata Agatha Pinto", "isabelrenataagathapinto@charquesorocaba.com.br", "ILyZyTXflo");
+		User user6 = new User("272.659.622-30", "Isabel Renata Agatha Pinto", "isabelrenataagathapinto@charquesorocaba.com.br", "ILyZyTXflo");
 
 		// Coordenador: "Teologia" e "Filosofia"
 		// Supervisor: "Teologia" e "Filosofia"
-		User user7 = new User(null, "267.364.255-22", "Luiz Kaique Isaac Jesus", "luizkaiqueisaacjesus@budsoncorporation.com", "owX8j6ltA0");
+		User user7 = new User("267.364.255-22", "Luiz Kaique Isaac Jesus", "luizkaiqueisaacjesus@budsoncorporation.com", "owX8j6ltA0");
 		
 
 		// Administador e Aluno "Sistemas de Informação"
-		User user8 = new User(null, "017.728.964-38", "Nathan Noah Thiago da Costa", "nathannoahthiagodacosta@esplanadaviagens.com.br", "MN98AOw70K");
+		User user8 = new User("017.728.964-38", "Nathan Noah Thiago da Costa", "nathannoahthiagodacosta@esplanadaviagens.com.br", "MN98AOw70K");
 
 		// Alunos:
 		// "Sistemas de Informação"
-		User user9 = new User(null, "824.973.055-01", "Diogo Raul Silva", "diogoraulsilva-78@digen.com.br", "D7Zi2H17rW");
+		User user9 = new User("824.973.055-01", "Diogo Raul Silva", "diogoraulsilva-78@digen.com.br", "D7Zi2H17rW");
 
 		// "Engenharia de Software"
-		User user10 = new User(null, "770.164.986-70", "Rafaela Clara Bárbara da Rocha", "rrafaelaclarabarbaradarocha@candello.abv.br", "O4bOFIrC6U");
-		User user11 = new User(null, "634.546.494-55", "Bernardo Anderson Lima", "bernardoandersonlima-77@inductothermgroup.com.br", "4RuW0MAPLb");
+		User user10 = new User("770.164.986-70", "Rafaela Clara Bárbara da Rocha", "rrafaelaclarabarbaradarocha@candello.abv.br", "O4bOFIrC6U");
+		User user11 = new User("634.546.494-55", "Bernardo Anderson Lima", "bernardoandersonlima-77@inductothermgroup.com.br", "4RuW0MAPLb");
 		
 		// "Administração"
-		User user12 = new User(null, "193.628.382-49", "Antonella Heloise Aragão", "antonellaheloisearagao_@grupoitamaraty.com.br", "SDAmsNgDEy");
-		User user13 = new User(null, "759.012.025-11", "Milena Nicole Ester Melo", "milenanicoleestermelo-70@ouserTipolock.com", "KiDJmNXmd4");
-		User user14 = new User(null, "558.108.283-96", "Ruan Pedro Viana", "ruanpedroviana..ruanpedroviana@anbima.com.br", "QP8Eg0Y7Pw");
+		User user12 = new User("193.628.382-49", "Antonella Heloise Aragão", "antonellaheloisearagao_@grupoitamaraty.com.br", "SDAmsNgDEy");
+		User user13 = new User("759.012.025-11", "Milena Nicole Ester Melo", "milenanicoleestermelo-70@ouserTipolock.com", "KiDJmNXmd4");
+		User user14 = new User("558.108.283-96", "Ruan Pedro Viana", "ruanpedroviana..ruanpedroviana@anbima.com.br", "QP8Eg0Y7Pw");
 		
 		// "Nutrição"
-		User user15 = new User(null, "020.984.203-23", "Lucas Oliver das Neves", "lucasoliverdasneves__lucasoliverdasneves@zoomfoccus.com.br", "FoeKiXm0ZB");
-		User user16 = new User(null, "955.586.448-93", "Tomás Paulo Jesus", "ttomaspaulojesus@nelsoncosta.com.br", "N05yZtdyMU");
+		User user15 = new User("020.984.203-23", "Lucas Oliver das Neves", "lucasoliverdasneves__lucasoliverdasneves@zoomfoccus.com.br", "FoeKiXm0ZB");
+		User user16 = new User("955.586.448-93", "Tomás Paulo Jesus", "ttomaspaulojesus@nelsoncosta.com.br", "N05yZtdyMU");
 		
 		// "Fisioterapia"
-		User user17 = new User(null, "348.646.029-30", "Pedro Henrique Diego Roberto Martins", "pedrohenriquediegorobertomartins..pedrohenriquediegorobertomartins@tec3.com.br", "LzmEdCpfRp");
-		User user18 = new User(null, "845.932.684-51", "Osvaldo Edson Vieira", "osvaldoedsonvieira__osvaldoedsonvieira@focustg.com.br", "eqNBljRNau");
+		User user17 = new User("348.646.029-30", "Pedro Henrique Diego Roberto Martins", "pedrohenriquediegorobertomartins..pedrohenriquediegorobertomartins@tec3.com.br", "LzmEdCpfRp");
+		User user18 = new User("845.932.684-51", "Osvaldo Edson Vieira", "osvaldoedsonvieira__osvaldoedsonvieira@focustg.com.br", "eqNBljRNau");
 		
 		// "Teologia"
-		User user19 = new User(null, "459.518.706-82", "Joaquim Lucca da Cruz", "joaquimluccadacruz__joaquimluccadacruz@callan.com.br", "r9EngPfORH");
+		User user19 = new User("459.518.706-82", "Joaquim Lucca da Cruz", "joaquimluccadacruz__joaquimluccadacruz@callan.com.br", "r9EngPfORH");
 		
 		// "Filosofia"
-		User user20 = new User(null, "685.776.221-00", "João Miguel da Conceição", "joaomigueldaconceicao__joaomigueldaconceicao@carlosalbertoleite.com.br", "qMEWbTgXku");
+		User user20 = new User("685.776.221-00", "João Miguel da Conceição", "joaomigueldaconceicao__joaomigueldaconceicao@carlosalbertoleite.com.br", "qMEWbTgXku");
 
 		UserType userTipo1 = new UserType(null, "Coordenador");
 		UserType userTipo2 = new UserType(null, "Supervisor");
@@ -146,19 +146,19 @@ public class AtivcomplApplication implements CommandLineRunner{
 		Category cat5 = new Category(null, "Curso de Línguas");
 		Category cat6 = new Category(null, "Curso de Programação");
 
-		Student stu1 = new Student(null, sdf.parse("02/02/2018"), user8, addr8);
-		Student stu2 = new Student(null, sdf.parse("02/02/2020"), user9, addr9);
-		Student stu3 = new Student(null, sdf.parse("02/08/2017"), user10, addr10);
-		Student stu4 = new Student(null, sdf.parse("02/08/2019"), user11, addr11);
-		Student stu5 = new Student(null, sdf.parse("02/02/2019"), user12, addr12);
-		Student stu6 = new Student(null, sdf.parse("02/08/2020"), user13, addr13);
-		Student stu7 = new Student(null, sdf.parse("02/02/2021"), user14, addr14);
-		Student stu8 = new Student(null, sdf.parse("02/08/2019"), user15, addr15);
-		Student stu9 = new Student(null, sdf.parse("02/08/2018"), user16, addr16);
-		Student stu10 = new Student(null, sdf.parse("02/08/2019"), user17, addr17);
-		Student stu11 = new Student(null, sdf.parse("02/02/2017"), user18, addr18);
-		Student stu12 = new Student(null, sdf.parse("02/02/2018"), user19, addr19);
-		Student stu13 = new Student(null, sdf.parse("02/08/2018"), user20, addr20);
+		Student stu1 = new Student(sdf.parse("02/02/2018"), user8, addr8);
+		Student stu2 = new Student(sdf.parse("02/02/2020"), user9, addr9);
+		Student stu3 = new Student(sdf.parse("02/08/2017"), user10, addr10);
+		Student stu4 = new Student(sdf.parse("02/08/2019"), user11, addr11);
+		Student stu5 = new Student(sdf.parse("02/02/2019"), user12, addr12);
+		Student stu6 = new Student(sdf.parse("02/08/2020"), user13, addr13);
+		Student stu7 = new Student(sdf.parse("02/02/2021"), user14, addr14);
+		Student stu8 = new Student(sdf.parse("02/08/2019"), user15, addr15);
+		Student stu9 = new Student(sdf.parse("02/08/2018"), user16, addr16);
+		Student stu10 = new Student(sdf.parse("02/08/2019"), user17, addr17);
+		Student stu11 = new Student(sdf.parse("02/02/2017"), user18, addr18);
+		Student stu12 = new Student(sdf.parse("02/02/2018"), user19, addr19);
+		Student stu13 = new Student(sdf.parse("02/08/2018"), user20, addr20);
 		
 		
 		
@@ -170,26 +170,26 @@ public class AtivcomplApplication implements CommandLineRunner{
 		Valuation valuation1 = new Valuation(null, ValuationEnum.ACEITAR, "Muito bom", at4);
 		Valuation valuation2 = new Valuation(null, ValuationEnum.NEGAR_TOTAL, "Essa palestra não condiz com o curso", at3);
 			
-		user1.getUsersTypes().addAll(Arrays.asList(userTipo1));
-		user2.getUsersTypes().addAll(Arrays.asList(userTipo2));
-		user3.getUsersTypes().addAll(Arrays.asList(userTipo1));
-		user4.getUsersTypes().addAll(Arrays.asList(userTipo2));
-		user5.getUsersTypes().addAll(Arrays.asList(userTipo1));
-		user6.getUsersTypes().addAll(Arrays.asList(userTipo2));
-		user7.getUsersTypes().addAll(Arrays.asList(userTipo1, userTipo2));
-		user8.getUsersTypes().addAll(Arrays.asList(userTipo3, userTipo4));
-		user9.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user10.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user11.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user12.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user13.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user14.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user15.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user16.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user17.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user18.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user19.getUsersTypes().addAll(Arrays.asList(userTipo4));
-		user20.getUsersTypes().addAll(Arrays.asList(userTipo4));
+		user1.getUserTypeList().addAll(Arrays.asList(userTipo1));
+		user2.getUserTypeList().addAll(Arrays.asList(userTipo2));
+		user3.getUserTypeList().addAll(Arrays.asList(userTipo1));
+		user4.getUserTypeList().addAll(Arrays.asList(userTipo2));
+		user5.getUserTypeList().addAll(Arrays.asList(userTipo1));
+		user6.getUserTypeList().addAll(Arrays.asList(userTipo2));
+		user7.getUserTypeList().addAll(Arrays.asList(userTipo1, userTipo2));
+		user8.getUserTypeList().addAll(Arrays.asList(userTipo3, userTipo4));
+		user9.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user10.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user11.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user12.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user13.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user14.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user15.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user16.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user17.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user18.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user19.getUserTypeList().addAll(Arrays.asList(userTipo4));
+		user20.getUserTypeList().addAll(Arrays.asList(userTipo4));
 		
 		userTipo1.getUsers().addAll(Arrays.asList(user1, user3, user5, user7));
 		userTipo2.getUsers().addAll(Arrays.asList(user2, user4, user6, user7));

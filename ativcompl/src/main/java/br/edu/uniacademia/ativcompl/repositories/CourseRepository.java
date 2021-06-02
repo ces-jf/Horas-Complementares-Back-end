@@ -7,5 +7,5 @@ import br.edu.uniacademia.ativcompl.domain.Course;
 
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
-
+	
 }
