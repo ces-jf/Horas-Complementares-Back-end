@@ -3,6 +3,7 @@ package br.edu.uniacademia.ativcompl.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import br.edu.uniacademia.ativcompl.domain.enums.Valuation;
 
 @Entity
 public class Activity implements Serializable{
@@ -31,9 +30,9 @@ public class Activity implements Serializable{
 	private Double hoursCompleted;
 	private Boolean closed;
 	private String certificate;
-	private Integer valuation;
-	private String justification;
 	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "activity")
+	private Valuation valuation;
 
 	@ManyToOne
 	@JoinColumn(name = "student_id")
@@ -47,7 +46,7 @@ public class Activity implements Serializable{
 	public Activity() { }
 
 	public Activity(Long id, String name, Date start, Double workload, Double hoursCompleted, Boolean closed,
-			String certificate, Valuation valuation, String justification, Student student, Category category) {
+			String certificate, Student student, Category category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -56,8 +55,6 @@ public class Activity implements Serializable{
 		this.hoursCompleted = hoursCompleted;
 		this.closed = closed;
 		this.certificate = certificate;
-		this.valuation = (valuation == null) ? null : valuation.getCod();
-		this.justification = justification;
 		this.student = student;
 		this.category = category;
 	}
@@ -119,21 +116,13 @@ public class Activity implements Serializable{
 	}
 
 	public Valuation getValuation() {
-		return Valuation.toEnum(valuation);
+		return valuation;
 	}
 
 	public void setValuation(Valuation valuation) {
-		this.valuation = valuation.getCod();
+		this.valuation = valuation;
 	}
 
-	public String getJustification() {
-		return justification;
-	}
-
-	public void setJustification(String justification) {
-		this.justification = justification;
-	}
-	
 	public Category getCategory() {
 		return category;
 	}

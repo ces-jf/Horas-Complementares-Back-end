@@ -64,7 +64,5 @@ public class ActivityService {
 		newObj.setHoursCompleted(obj.getHoursCompleted());
 		newObj.setClosed(obj.getClosed());
 		newObj.setCertificate(obj.getCertificate());
-		newObj.setValuation(obj.getValuation());
-		newObj.setJustification(obj.getJustification());
 	}
 }

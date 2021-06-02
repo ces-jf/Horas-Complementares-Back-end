@@ -1,13 +1,15 @@
 package br.edu.uniacademia.ativcompl.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.edu.uniacademia.ativcompl.domain.Activity;
-import br.edu.uniacademia.ativcompl.domain.enums.Valuation;
+import br.edu.uniacademia.ativcompl.domain.enums.ValuetionEnum;
 
-public class ActivityDTO {
+public class ActivityDTO implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	private String name;
@@ -32,8 +34,6 @@ public class ActivityDTO {
 		this.hoursCompleted = obj.getHoursCompleted();
 		this.closed = obj.getClosed();
 		this.certificate = obj.getCertificate();
-		this.valuation = (obj.getValuation() == null) ? null : obj.getValuation().getCod();
-		this.justification = obj.getJustification();
 	}
 
 	public Long getId() {
@@ -92,11 +92,11 @@ public class ActivityDTO {
 		this.certificate = certificate;
 	}
 
-	public Valuation getValuation() {
-		return Valuation.toEnum(valuation);
+	public ValuetionEnum getValuation() {
+		return ValuetionEnum.toEnum(valuation);
 	}
 
-	public void setValuation(Valuation valuation) {
+	public void setValuation(ValuetionEnum valuation) {
 		this.valuation = valuation.getCod();
 	}
 

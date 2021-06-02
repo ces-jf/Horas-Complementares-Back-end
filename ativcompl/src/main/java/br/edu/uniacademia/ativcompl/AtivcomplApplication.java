@@ -16,7 +16,8 @@ import br.edu.uniacademia.ativcompl.domain.Course;
 import br.edu.uniacademia.ativcompl.domain.Student;
 import br.edu.uniacademia.ativcompl.domain.User;
 import br.edu.uniacademia.ativcompl.domain.UserType;
-import br.edu.uniacademia.ativcompl.domain.enums.Valuation;
+import br.edu.uniacademia.ativcompl.domain.Valuation;
+import br.edu.uniacademia.ativcompl.domain.enums.ValuetionEnum;
 import br.edu.uniacademia.ativcompl.repositories.ActivityRepository;
 import br.edu.uniacademia.ativcompl.repositories.AddressRepository;
 import br.edu.uniacademia.ativcompl.repositories.CampusRepository;
@@ -25,6 +26,7 @@ import br.edu.uniacademia.ativcompl.repositories.CourseRepository;
 import br.edu.uniacademia.ativcompl.repositories.StudentRepository;
 import br.edu.uniacademia.ativcompl.repositories.UserRepository;
 import br.edu.uniacademia.ativcompl.repositories.UserTypeRepository;
+import br.edu.uniacademia.ativcompl.repositories.ValuationRepository;
 
 @SpringBootApplication
 public class AtivcomplApplication implements CommandLineRunner{
@@ -37,6 +39,7 @@ public class AtivcomplApplication implements CommandLineRunner{
 	@Autowired  private CategoryRepository categoryRepository;
 	@Autowired  private StudentRepository studentRepository;
 	@Autowired  private ActivityRepository activityRepository;
+	@Autowired  private ValuationRepository valuationRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtivcomplApplication.class, args);
@@ -157,10 +160,13 @@ public class AtivcomplApplication implements CommandLineRunner{
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
-		Activity at1 = new Activity(null, "Curso de Phyton", sdf.parse("15/05/2021"), 12.0, 5.0, false, "", null, "", stu1, cat6);
-		Activity at2 = new Activity(null, "Curso de Inglês", sdf.parse("20/02/2020"), 1200.0, 640.0, false, "", null, "", stu2, cat5);
-		Activity at3 = new Activity(null, "Curso de PHP", sdf.parse("20/04/2021"), 6.0, 6.0, true, "abc12es381a", Valuation.ACEITAR, "", stu3,  cat6);
-		Activity at4 = new Activity(null, "Palestra Senhor dos Aneis", sdf.parse("28/08/2021"), 3.0, 3.0, true, "25e23rty31hj", Valuation.NEGAR_TOTAL, "Essa palestra não condiz com o curso", stu4, cat4);
+		Activity at1 = new Activity(null, "Curso de Phyton", sdf.parse("15/05/2021"), 12.0, 5.0, false, "", stu1, cat6);
+		Activity at2 = new Activity(null, "Curso de Inglês", sdf.parse("20/02/2020"), 1200.0, 640.0, false, "", stu2, cat5);
+		Activity at3 = new Activity(null, "Curso de PHP", sdf.parse("20/04/2021"), 6.0, 6.0, true, "abc12es381a", stu3,  cat6);
+		Activity at4 = new Activity(null, "Palestra Senhor dos Aneis", sdf.parse("28/08/2021"), 3.0, 3.0, true, "25e23rty31hj", stu4, cat4);
+		
+		Valuation valuation1 = new Valuation(null, ValuetionEnum.ACEITAR, "Muito bom", at4);
+		Valuation valuation2 = new Valuation(null, ValuetionEnum.NEGAR_TOTAL, "Essa palestra não condiz com o curso", at3);
 			
 		user1.getUsersTypes().addAll(Arrays.asList(userTipo1));
 		user2.getUsersTypes().addAll(Arrays.asList(userTipo2));
@@ -230,6 +236,7 @@ public class AtivcomplApplication implements CommandLineRunner{
 		courseRepository.saveAll(Arrays.asList(crs1, crs2, crs3, crs4, crs5, crs6, crs7));
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6));
 		studentRepository.saveAll(Arrays.asList(stu1, stu2, stu3, stu4, stu5, stu6, stu7, stu8, stu9, stu10, stu11, stu12, stu13));
+		valuationRepository.saveAll(Arrays.asList(valuation1, valuation2));
 		activityRepository.saveAll(Arrays.asList(at1, at2, at3, at4));
 		
 	}
