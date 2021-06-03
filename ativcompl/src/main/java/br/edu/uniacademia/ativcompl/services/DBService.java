@@ -223,8 +223,7 @@ public class DBService {
 		cmp1.getCourses().addAll(Arrays.asList(crs1, crs2, crs3));
 		cmp2.getCourses().addAll(Arrays.asList(crs4, crs5));
 		cmp3.getCourses().addAll(Arrays.asList(crs6, crs7));
-		
-		
+				
 		addressRepository.saveAll(Arrays.asList(addr8, addr9, addr10, addr11, addr12, addr13, addr14, addr15, addr16, addr17, addr18, addr19, addr20));
 		userTypeRepository.saveAll(Arrays.asList(userTipo1, userTipo2, userTipo3, userTipo4));
 		campusRepository.saveAll(Arrays.asList(cmp1, cmp2, cmp3));
