@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -31,11 +30,7 @@ public class Course implements Serializable{
 	private Campus campus;
 	
 	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "USER_COURSE",
-			joinColumns = @JoinColumn(name = "course_id"),
-			inverseJoinColumns = @JoinColumn(name = "user_id")
-	)
+	@ManyToMany(mappedBy = "courses")
 	private List<User> users = new ArrayList<>();
 	
 	public Course() { }

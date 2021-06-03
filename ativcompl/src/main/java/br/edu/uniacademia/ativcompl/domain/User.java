@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -22,10 +24,20 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 				
-	@ManyToMany(mappedBy = "users")
+	@ManyToMany
+	@JoinTable(name = "USER_TYPEUSER",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "userType_id")
+	)
 	private List<UserType> userTypeList = new ArrayList<>();
 	
-	@ManyToMany(mappedBy = "users")
+	
+
+	@ManyToMany
+	@JoinTable(name = "USER_COURSE",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "course_id")
+	)
 	private List<Course> courses = new ArrayList<>();
 	
 	public User() {	}
@@ -45,6 +57,16 @@ public class User implements Serializable {
 		this.name = name;
 		this.email = email;
 		this.password = password;
+	}
+	
+	public User(String registration, String name, String email, String password, UserType userType, Course course) {
+		super();
+		this.registration = registration;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.userTypeList.add(userType);
+		this.courses.add(course);
 	}
 
 	public Long getId() {

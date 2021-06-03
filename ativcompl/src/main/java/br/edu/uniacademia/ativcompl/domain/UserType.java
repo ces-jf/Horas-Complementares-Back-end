@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,13 +20,9 @@ public class UserType implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String type;
-
+	
 	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "USER_TYPEUSER",
-			joinColumns = @JoinColumn(name = "userType_id"),
-			inverseJoinColumns = @JoinColumn(name = "user_id")
-	)
+	@ManyToMany(mappedBy = "userTypeList")
 	private List<User> users = new ArrayList<>();
 	
 	public UserType() {}

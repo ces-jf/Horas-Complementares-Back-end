@@ -1,5 +1,6 @@
 package br.edu.uniacademia.ativcompl.services;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,6 @@ public class StudentService {
 	@Autowired  private StudentRepository repo;
 	@Autowired  private UserRepository repoUser;
 	@Autowired  private AddressRepository repoAddress;
-	
 	@Autowired  private CourseService serviceCourse;
 	@Autowired  private UserTypeService serviceUserType;
 	
@@ -44,8 +44,8 @@ public class StudentService {
 	public Student insert(Student obj) {
 		obj.setId(null);
 		repoAddress.save(obj.getAddress());
-		obj = repo.save(obj);
 		repoUser.save(obj.getUser());
+		obj = repo.save(obj);
 		return obj;
 	}
 	
@@ -74,7 +74,6 @@ public class StudentService {
 	}
 	
 	private void updateData(Student newObj, Student obj) {
-		newObj.setId(obj.getId());
 		newObj.setStartCourse(obj.getStartCourse());
 		newObj.getUser().setRegistration(obj.getUser().getRegistration());
 		newObj.getUser().setName(obj.getUser().getName());
@@ -91,19 +90,15 @@ public class StudentService {
 		Address address = new Address(objDto.getStreet(), objDto.getNumber(), objDto.getDistrict(), objDto.getCity());
 		return new Student(objDto.getId(), objDto.getStartCourse(), user, address);
 	}
-
 	
 	@Transactional
 	public Student fromDTO(StudentNewDTO objDto) {
-		Course course = serviceCourse.find(objDto.getCourse_id()); //orElse(new Course());
-		UserType userType = serviceUserType.find(objDto.getUserType_id()); //orElse(new UserType(objDto.getUserType_id(), "Tipo Novo"));
-
+		Course course = serviceCourse.find(objDto.getCourse_id());
+		UserType userType = serviceUserType.find(objDto.getUserType_id());	
 		User user = new User(objDto.getRegistration(), objDto.getName(), objDto.getEmail(), objDto.getPassword());
-		user.getCourses().add(course);
-		user.getUserTypeList().add(userType);
-		
+		user.getCourses().addAll(Arrays.asList(course));
+		user.getUserTypeList().addAll(Arrays.asList(userType));
 		Address address = new Address(objDto.getStreet(), objDto.getNumber(), objDto.getDistrict(), objDto.getCity());		
-		
 		Student student = new Student(objDto.getStartCourse(), user, address);
 		return student; 
 	}

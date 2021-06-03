@@ -232,10 +232,10 @@ public class AtivcomplApplication implements CommandLineRunner{
 		
 		
 		addressRepository.saveAll(Arrays.asList(addr8, addr9, addr10, addr11, addr12, addr13, addr14, addr15, addr16, addr17, addr18, addr19, addr20));
-		userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12, user13, user14, user15, user16, user17, user18, user19, user20));
 		userTypeRepository.saveAll(Arrays.asList(userTipo1, userTipo2, userTipo3, userTipo4));
 		campusRepository.saveAll(Arrays.asList(cmp1, cmp2, cmp3));
 		courseRepository.saveAll(Arrays.asList(crs1, crs2, crs3, crs4, crs5, crs6, crs7));
+		userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12, user13, user14, user15, user16, user17, user18, user19, user20));
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6));
 		studentRepository.saveAll(Arrays.asList(stu1, stu2, stu3, stu4, stu5, stu6, stu7, stu8, stu9, stu10, stu11, stu12, stu13));
 		valuationRepository.saveAll(Arrays.asList(valuation1, valuation2));
