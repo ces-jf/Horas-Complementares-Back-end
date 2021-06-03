@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_activities")
@@ -36,6 +37,7 @@ public class Activity implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "activity")
 	private Valuation valuation;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
@@ -51,6 +53,19 @@ public class Activity implements Serializable{
 			String certificate, Student student, Category category) {
 		super();
 		this.id = id;
+		this.name = name;
+		this.start = start;
+		this.workload = workload;
+		this.hoursCompleted = hoursCompleted;
+		this.closed = closed;
+		this.certificate = certificate;
+		this.student = student;
+		this.category = category;
+	}
+	
+	public Activity(String name, Date start, Double workload, Double hoursCompleted, Boolean closed,
+			String certificate, Student student, Category category) {
+		super();
 		this.name = name;
 		this.start = start;
 		this.workload = workload;
@@ -165,5 +180,23 @@ public class Activity implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Activity [name=");
+		builder.append(name);
+		builder.append(", start=");
+		builder.append(start);
+		builder.append(", workload=");
+		builder.append(workload);
+		builder.append(", hoursCompleted=");
+		builder.append(hoursCompleted);
+		builder.append(", certificate=");
+		builder.append(certificate);
+		builder.append("]");
+		return builder.toString();
+	}
 		
+	
 }

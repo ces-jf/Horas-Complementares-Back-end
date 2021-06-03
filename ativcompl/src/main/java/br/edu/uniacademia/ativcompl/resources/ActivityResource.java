@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.edu.uniacademia.ativcompl.domain.Activity;
 import br.edu.uniacademia.ativcompl.dto.ActivityDTO;
+import br.edu.uniacademia.ativcompl.dto.ActivityNewDTO;
 import br.edu.uniacademia.ativcompl.services.ActivityService;
 
 @RestController
@@ -33,7 +34,8 @@ public class ActivityResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Activity obj){
+	public ResponseEntity<Void> insert(@RequestBody ActivityNewDTO objDto){
+		Activity obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
