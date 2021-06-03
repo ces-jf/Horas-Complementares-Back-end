@@ -40,7 +40,8 @@ public class ActivityService {
 		
 		repo.save(obj);
 		
-		serviceEmail.sendOrderConfirmationHtmlEmail(obj);
+//		serviceEmail.sendOrderConfirmationHtmlEmail(obj);
+		serviceEmail.sendOrderConfirmationEmail(obj);
 		return obj; 
 	}
 	

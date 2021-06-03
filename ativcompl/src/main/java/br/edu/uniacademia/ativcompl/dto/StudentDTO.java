@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.edu.uniacademia.ativcompl.domain.Student;
 
@@ -33,6 +34,7 @@ public class StudentDTO implements Serializable {
 		@Email(message = "Email inválido")
 		private String email;
 
+		@JsonIgnore
 		@NotEmpty(message = "O campo não pode estar em branco")
 		private String password;
 

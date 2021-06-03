@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.edu.uniacademia.ativcompl.domain.Activity;
@@ -30,6 +31,7 @@ import br.edu.uniacademia.ativcompl.repositories.ValuationRepository;
 @Service
 public class DBService {
 	
+	@Autowired  private BCryptPasswordEncoder pswdEncoder;
 	@Autowired 	private AddressRepository addressRepository;
 	@Autowired 	private UserRepository userRepository;
 	@Autowired  private UserTypeRepository userTypeRepository;
@@ -67,54 +69,54 @@ public class DBService {
 				
 		
 		// Coordenador: "Sistemas de Informação" e "Engenharia de Software"
-		User user1 = new User("375.577.622-74", "Vitória Carolina Barbosa", "vitoriacarolinabarbosa-96@lphbrasil.com.br", "UQk4wSoai7");
+		User user1 = new User("375.577.622-74", "Vitória Carolina Barbosa", "vitoriacarolinabarbosa-96@lphbrasil.com.br", pswdEncoder.encode("UQk4wSoai7"));
 		// Supervisor: "Sistemas de Informação" e "Engenharia de Software"
-		User user2 = new User("124.906.495-31", "Guilherme Samuel Pires", "guilhermesamuelpires@cedda.com.br", "1XbTTe9udg");
+		User user2 = new User("124.906.495-31", "Guilherme Samuel Pires", "guilhermesamuelpires@cedda.com.br", pswdEncoder.encode("1XbTTe9udg"));
 		
 		// Coordenador: "Administração"
-		User user3 = new User("441.377.809-00", "Agatha Brenda Moreira", "agathabrendamoreira@pubdesign.com.br", "p4x2RimGji");
+		User user3 = new User("441.377.809-00", "Agatha Brenda Moreira", "agathabrendamoreira@pubdesign.com.br", pswdEncoder.encode("p4x2RimGji"));
 		// Supervisor: "Administração"
-		User user4 = new User("420.790.053-59", "Joana Carolina Souza", "joanacarolinasouza@jbtc.com", "4ld5o8RYYb"); 
+		User user4 = new User("420.790.053-59", "Joana Carolina Souza", "joanacarolinasouza@jbtc.com", pswdEncoder.encode("4ld5o8RYYb")); 
 
 		// Coordenador: "Nutrição" e "Fisioterapia"
-		User user5 = new User("169.588.437-03", "Bernardo Anthony Davi Drumond", "bernardoanthonydavidrumond-77@raya3.com.br", "W2BRb4G4Qz");
+		User user5 = new User("169.588.437-03", "Bernardo Anthony Davi Drumond", "bernardoanthonydavidrumond-77@raya3.com.br", pswdEncoder.encode("W2BRb4G4Qz"));
 		// Supervisor: "Nutrição" e "Fisioterapia"
-		User user6 = new User("272.659.622-30", "Isabel Renata Agatha Pinto", "isabelrenataagathapinto@charquesorocaba.com.br", "ILyZyTXflo");
+		User user6 = new User("272.659.622-30", "Isabel Renata Agatha Pinto", "isabelrenataagathapinto@charquesorocaba.com.br", pswdEncoder.encode("ILyZyTXflo"));
 
 		// Coordenador: "Teologia" e "Filosofia"
 		// Supervisor: "Teologia" e "Filosofia"
-		User user7 = new User("267.364.255-22", "Luiz Kaique Isaac Jesus", "luizkaiqueisaacjesus@budsoncorporation.com", "owX8j6ltA0");
+		User user7 = new User("267.364.255-22", "Luiz Kaique Isaac Jesus", "luizkaiqueisaacjesus@budsoncorporation.com", pswdEncoder.encode("owX8j6ltA0"));
 		
 
 		// Administador e Aluno "Sistemas de Informação"
-		User user8 = new User("017.728.964-38", "Nathan Noah Thiago da Costa", "nathannoahthiagodacosta@esplanadaviagens.com.br", "MN98AOw70K");
+		User user8 = new User("017.728.964-38", "Nathan Noah Thiago da Costa", "nathannoahthiagodacosta@esplanadaviagens.com.br", pswdEncoder.encode("MN98AOw70K"));
 
 		// Alunos:
 		// "Sistemas de Informação"
-		User user9 = new User("824.973.055-01", "Diogo Raul Silva", "diogoraulsilva-78@digen.com.br", "D7Zi2H17rW");
+		User user9 = new User("824.973.055-01", "Diogo Raul Silva", "diogoraulsilva-78@digen.com.br", pswdEncoder.encode("D7Zi2H17rW"));
 
 		// "Engenharia de Software"
-		User user10 = new User("770.164.986-70", "Rafaela Clara Bárbara da Rocha", "rrafaelaclarabarbaradarocha@candello.abv.br", "O4bOFIrC6U");
-		User user11 = new User("634.546.494-55", "Paulo Toledo Atividades Complementares", "ptoledo.bsices@gmail.com", "4RuW0MAPLb");
+		User user10 = new User("770.164.986-70", "Rafaela Clara Bárbara da Rocha", "rrafaelaclarabarbaradarocha@candello.abv.br", pswdEncoder.encode("O4bOFIrC6U"));
+		User user11 = new User("634.546.494-55", "Paulo Toledo Atividades Complementares", "ptoledo.bsices@gmail.com", pswdEncoder.encode("4RuW0MAPLb"));
 		
 		// "Administração"
-		User user12 = new User("193.628.382-49", "Antonella Heloise Aragão", "antonellaheloisearagao_@grupoitamaraty.com.br", "SDAmsNgDEy");
-		User user13 = new User("759.012.025-11", "Milena Nicole Ester Melo", "milenanicoleestermelo-70@ouserTipolock.com", "KiDJmNXmd4");
-		User user14 = new User("558.108.283-96", "Ruan Pedro Viana", "ruanpedroviana..ruanpedroviana@anbima.com.br", "QP8Eg0Y7Pw");
+		User user12 = new User("193.628.382-49", "Antonella Heloise Aragão", "antonellaheloisearagao_@grupoitamaraty.com.br", pswdEncoder.encode("SDAmsNgDEy"));
+		User user13 = new User("759.012.025-11", "Milena Nicole Ester Melo", "milenanicoleestermelo-70@ouserTipolock.com", pswdEncoder.encode("KiDJmNXmd4"));
+		User user14 = new User("558.108.283-96", "Ruan Pedro Viana", "ruanpedroviana..ruanpedroviana@anbima.com.br", pswdEncoder.encode("QP8Eg0Y7Pw"));
 		
 		// "Nutrição"
-		User user15 = new User("020.984.203-23", "Lucas Oliver das Neves", "lucasoliverdasneves__lucasoliverdasneves@zoomfoccus.com.br", "FoeKiXm0ZB");
-		User user16 = new User("955.586.448-93", "Tomás Paulo Jesus", "ttomaspaulojesus@nelsoncosta.com.br", "N05yZtdyMU");
+		User user15 = new User("020.984.203-23", "Lucas Oliver das Neves", "lucasoliverdasneves__lucasoliverdasneves@zoomfoccus.com.br", pswdEncoder.encode("FoeKiXm0ZB"));
+		User user16 = new User("955.586.448-93", "Tomás Paulo Jesus", "ttomaspaulojesus@nelsoncosta.com.br", pswdEncoder.encode("N05yZtdyMU"));
 		
 		// "Fisioterapia"
-		User user17 = new User("348.646.029-30", "Pedro Henrique Diego Roberto Martins", "pedrohenriquediegorobertomartins..pedrohenriquediegorobertomartins@tec3.com.br", "LzmEdCpfRp");
-		User user18 = new User("845.932.684-51", "Osvaldo Edson Vieira", "osvaldoedsonvieira__osvaldoedsonvieira@focustg.com.br", "eqNBljRNau");
+		User user17 = new User("348.646.029-30", "Pedro Henrique Diego Roberto Martins", "pedrohenriquediegorobertomartins..pedrohenriquediegorobertomartins@tec3.com.br", pswdEncoder.encode("LzmEdCpfRp"));
+		User user18 = new User("845.932.684-51", "Osvaldo Edson Vieira", "osvaldoedsonvieira__osvaldoedsonvieira@focustg.com.br", pswdEncoder.encode("eqNBljRNau"));
 		
 		// "Teologia"
-		User user19 = new User("459.518.706-82", "Joaquim Lucca da Cruz", "joaquimluccadacruz__joaquimluccadacruz@callan.com.br", "r9EngPfORH");
+		User user19 = new User("459.518.706-82", "Joaquim Lucca da Cruz", "joaquimluccadacruz__joaquimluccadacruz@callan.com.br", pswdEncoder.encode("r9EngPfORH"));
 		
 		// "Filosofia"
-		User user20 = new User("685.776.221-00", "João Miguel da Conceição", "joaomigueldaconceicao__joaomigueldaconceicao@carlosalbertoleite.com.br", "qMEWbTgXku");
+		User user20 = new User("685.776.221-00", "João Miguel da Conceição", "joaomigueldaconceicao__joaomigueldaconceicao@carlosalbertoleite.com.br", pswdEncoder.encode("qMEWbTgXku"));
 
 		UserType userTipo1 = new UserType(null, "Coordenador");
 		UserType userTipo2 = new UserType(null, "Supervisor");

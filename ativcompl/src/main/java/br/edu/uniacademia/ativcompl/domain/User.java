@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_users")
 public class User implements Serializable {
@@ -24,6 +26,8 @@ public class User implements Serializable {
 	private String registration;
 	private String name;
 	private String email;
+	
+	@JsonIgnore
 	private String password;
 				
 	@ManyToMany

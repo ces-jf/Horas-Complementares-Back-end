@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.edu.uniacademia.ativcompl.domain.User;
@@ -19,8 +20,8 @@ import br.edu.uniacademia.ativcompl.services.exceptions.ObjectNotFoundException;
 @Service
 public class UserService {
 	
-	@Autowired
-	private UserRepository repo;
+	@Autowired  private BCryptPasswordEncoder pswdEncoder;
+	@Autowired	private UserRepository repo;
 	
 	public User find(Long id) {
 		Optional<User> obj = repo.findById(id);
@@ -65,7 +66,7 @@ public class UserService {
 	}
 	
 	public User fromDTO(UserDTO objDto) {
-		return new User(objDto.getRegistration(), objDto.getName(), objDto.getEmail(), objDto.getPassword());
+		return new User(objDto.getRegistration(), objDto.getName(), objDto.getEmail(), pswdEncoder.encode(objDto.getPassword()));
 	}
 
 }

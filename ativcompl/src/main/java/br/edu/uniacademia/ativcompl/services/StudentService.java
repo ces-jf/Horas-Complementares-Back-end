@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,7 @@ import br.edu.uniacademia.ativcompl.services.exceptions.ObjectNotFoundException;
 @Service
 public class StudentService {
 	
+	@Autowired  private BCryptPasswordEncoder pswdEncoder;
 	@Autowired  private StudentRepository repo;
 	@Autowired  private UserRepository repoUser;
 	@Autowired  private AddressRepository repoAddress;
@@ -86,7 +88,7 @@ public class StudentService {
 	}
 	
 	public Student fromDTO(StudentDTO objDto) {
-		User user = new User(objDto.getRegistration(), objDto.getName(), objDto.getEmail(), objDto.getPassword());
+		User user = new User(objDto.getRegistration(), objDto.getName(), objDto.getEmail(), pswdEncoder.encode(objDto.getPassword()));
 		Address address = new Address(objDto.getStreet(), objDto.getNumber(), objDto.getDistrict(), objDto.getCity());
 		return new Student(objDto.getId(), objDto.getStartCourse(), user, address);
 	}
@@ -95,7 +97,7 @@ public class StudentService {
 	public Student fromDTO(StudentNewDTO objDto) {
 		Course course = serviceCourse.find(objDto.getCourse_id());
 		UserType userType = serviceUserType.find(objDto.getUserType_id());	
-		User user = new User(objDto.getRegistration(), objDto.getName(), objDto.getEmail(), objDto.getPassword());
+		User user = new User(objDto.getRegistration(), objDto.getName(), objDto.getEmail(), pswdEncoder.encode(objDto.getPassword()));
 		user.getCourses().addAll(Arrays.asList(course));
 		user.getUserTypeList().addAll(Arrays.asList(userType));
 		Address address = new Address(objDto.getStreet(), objDto.getNumber(), objDto.getDistrict(), objDto.getCity());		
