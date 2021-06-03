@@ -7,12 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.edu.uniacademia.ativcompl.domain.enums.ValuationEnum;
 
 @Entity
+@Table(name = "tb_valuations")
 public class Valuation implements Serializable{
 	private static final long serialVersionUID = 1L;
 

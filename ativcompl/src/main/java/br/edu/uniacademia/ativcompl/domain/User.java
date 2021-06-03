@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_users")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +27,7 @@ public class User implements Serializable {
 	private String password;
 				
 	@ManyToMany
-	@JoinTable(name = "USER_TYPEUSER",
+	@JoinTable(name = "tb_users_user_types",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "userType_id")
 	)
@@ -34,7 +36,7 @@ public class User implements Serializable {
 	
 
 	@ManyToMany
-	@JoinTable(name = "USER_COURSE",
+	@JoinTable(name = "tb_user_courses",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "course_id")
 	)
@@ -59,16 +61,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
-	public User(String registration, String name, String email, String password, UserType userType, Course course) {
-		super();
-		this.registration = registration;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.userTypeList.add(userType);
-		this.courses.add(course);
-	}
-
 	public Long getId() {
 		return id;
 	}

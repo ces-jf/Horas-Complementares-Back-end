@@ -9,10 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "tb_user_types")
 public class UserType implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -23,7 +25,7 @@ public class UserType implements Serializable {
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "userTypeList")
-	private List<User> users = new ArrayList<>();
+	private List<User> user = new ArrayList<>();
 	
 	public UserType() {}
 
@@ -56,12 +58,12 @@ public class UserType implements Serializable {
 
 
 	public List<User> getUsers() {
-		return users;
+		return user;
 	}
 
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setUsers(List<User> user) {
+		this.user = user;
 	}
 
 
