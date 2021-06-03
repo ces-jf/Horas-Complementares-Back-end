@@ -184,15 +184,17 @@ public class Activity implements Serializable{
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Activity [name=");
+		builder.append("Atividade [Nome=");
 		builder.append(name);
-		builder.append(", start=");
+		builder.append(", Aluno=");
+		builder.append(student.getUser().getName());
+		builder.append(", início=");
 		builder.append(start);
-		builder.append(", workload=");
+		builder.append(", Carga horaria=");
 		builder.append(workload);
-		builder.append(", hoursCompleted=");
+		builder.append(", Horas Completadas=");
 		builder.append(hoursCompleted);
-		builder.append(", certificate=");
+		builder.append(", Certificado=");
 		builder.append(certificate);
 		builder.append("]");
 		return builder.toString();
