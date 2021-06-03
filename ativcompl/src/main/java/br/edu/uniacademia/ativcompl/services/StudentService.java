@@ -1,8 +1,13 @@
 package br.edu.uniacademia.ativcompl.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,10 +16,12 @@ import br.edu.uniacademia.ativcompl.domain.Course;
 import br.edu.uniacademia.ativcompl.domain.Student;
 import br.edu.uniacademia.ativcompl.domain.User;
 import br.edu.uniacademia.ativcompl.domain.UserType;
+import br.edu.uniacademia.ativcompl.dto.StudentDTO;
 import br.edu.uniacademia.ativcompl.dto.StudentNewDTO;
 import br.edu.uniacademia.ativcompl.repositories.AddressRepository;
 import br.edu.uniacademia.ativcompl.repositories.StudentRepository;
 import br.edu.uniacademia.ativcompl.repositories.UserRepository;
+import br.edu.uniacademia.ativcompl.services.exceptions.DataIntegrityException;
 import br.edu.uniacademia.ativcompl.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -41,6 +48,50 @@ public class StudentService {
 		repoUser.save(obj.getUser());
 		return obj;
 	}
+	
+	public Student update(Student obj) {
+		Student newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	public void delete(Long id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+		} catch(DataIntegrityViolationException e) {
+			 throw new DataIntegrityException("Não foi possível excluir este Usuário.");
+		}
+	}
+	
+	public List<Student> findAll(){
+		return repo.findAll();
+	}
+
+	public Page<Student> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		return repo.findAll(pageRequest);
+	}
+	
+	private void updateData(Student newObj, Student obj) {
+		newObj.setId(obj.getId());
+		newObj.setStartCourse(obj.getStartCourse());
+		newObj.getUser().setRegistration(obj.getUser().getRegistration());
+		newObj.getUser().setName(obj.getUser().getName());
+		newObj.getUser().setEmail(obj.getUser().getEmail());
+		newObj.getUser().setPassword(obj.getUser().getPassword());
+		newObj.getAddress().setStreet(obj.getAddress().getStreet());
+		newObj.getAddress().setNumber(obj.getAddress().getNumber());
+		newObj.getAddress().setDistrict(obj.getAddress().getDistrict());
+		newObj.getAddress().setCity(obj.getAddress().getCity());
+	}
+	
+	public Student fromDTO(StudentDTO objDto) {
+		User user = new User(objDto.getRegistration(), objDto.getName(), objDto.getEmail(), objDto.getPassword());
+		Address address = new Address(objDto.getStreet(), objDto.getNumber(), objDto.getDistrict(), objDto.getCity());
+		return new Student(objDto.getId(), objDto.getStartCourse(), user, address);
+	}
+
 	
 	@Transactional
 	public Student fromDTO(StudentNewDTO objDto) {
