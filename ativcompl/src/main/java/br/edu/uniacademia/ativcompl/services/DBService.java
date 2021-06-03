@@ -95,7 +95,7 @@ public class DBService {
 
 		// "Engenharia de Software"
 		User user10 = new User("770.164.986-70", "Rafaela Clara Bárbara da Rocha", "rrafaelaclarabarbaradarocha@candello.abv.br", "O4bOFIrC6U");
-		User user11 = new User("634.546.494-55", "Bernardo Anderson Lima", "bernardoandersonlima-77@inductothermgroup.com.br", "4RuW0MAPLb");
+		User user11 = new User("634.546.494-55", "Paulo Toledo Atividades Complementares", "ptoledo.bsices@gmail.com", "4RuW0MAPLb");
 		
 		// "Administração"
 		User user12 = new User("193.628.382-49", "Antonella Heloise Aragão", "antonellaheloisearagao_@grupoitamaraty.com.br", "SDAmsNgDEy");
