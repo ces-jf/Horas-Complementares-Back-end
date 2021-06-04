@@ -46,6 +46,7 @@ public class User implements Serializable {
 	)
 	private List<Course> courses = new ArrayList<>();
 	
+	
 	public User() {	}
 
 	public User(Long id, String registration, String name, String email, String password) {

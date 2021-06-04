@@ -2,9 +2,15 @@ package br.edu.uniacademia.ativcompl.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +18,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.edu.uniacademia.ativcompl.domain.enums.ProfileEnum;
 
 @Entity
 @Table(name = "tb_user_types")
@@ -26,6 +34,10 @@ public class UserType implements Serializable {
 	@JsonIgnore
 	@ManyToMany(mappedBy = "userTypeList")
 	private List<User> user = new ArrayList<>();
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "tb_profiles")
+	private Set<Integer> profiles = new HashSet<>();
 	
 	public UserType() {}
 
@@ -55,7 +67,14 @@ public class UserType implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	
+	public Set<ProfileEnum> getProfiles(){
+		return profiles.stream().map(p -> ProfileEnum.toEnum(p)).collect(Collectors.toSet());
+	}
+	
+	public void addProfile(ProfileEnum profile) {
+		profiles.add(profile.getCod());
+	}
 
 	public List<User> getUsers() {
 		return user;

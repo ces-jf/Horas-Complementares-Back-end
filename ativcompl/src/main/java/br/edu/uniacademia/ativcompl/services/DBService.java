@@ -17,6 +17,7 @@ import br.edu.uniacademia.ativcompl.domain.Student;
 import br.edu.uniacademia.ativcompl.domain.User;
 import br.edu.uniacademia.ativcompl.domain.UserType;
 import br.edu.uniacademia.ativcompl.domain.Valuation;
+import br.edu.uniacademia.ativcompl.domain.enums.ProfileEnum;
 import br.edu.uniacademia.ativcompl.domain.enums.ValuationEnum;
 import br.edu.uniacademia.ativcompl.repositories.ActivityRepository;
 import br.edu.uniacademia.ativcompl.repositories.AddressRepository;
@@ -119,9 +120,13 @@ public class DBService {
 		User user20 = new User("685.776.221-00", "João Miguel da Conceição", "joaomigueldaconceicao__joaomigueldaconceicao@carlosalbertoleite.com.br", pswdEncoder.encode("qMEWbTgXku"));
 
 		UserType userTipo1 = new UserType(null, "Coordenador");
+		userTipo1.addProfile(ProfileEnum.ADMIN);
 		UserType userTipo2 = new UserType(null, "Supervisor");
+		userTipo2.addProfile(ProfileEnum.ADMIN);
 		UserType userTipo3 = new UserType(null, "Administrador");
+		userTipo3.addProfile(ProfileEnum.AGENT);
 		UserType userTipo4 = new UserType(null, "Aluno");
+		userTipo4.addProfile(ProfileEnum.USER);
 		
 		Campus cmp1 = new Campus(null, "Academia");
 		Campus cmp2 = new Campus(null, "Arnaldo Janssen");
