@@ -18,7 +18,7 @@ public enum ProfileEnum {
 		return cod;
 	}
 
-	public String getDescricao() {
+	public String getDescription() {
 		return description;
 	}
 	

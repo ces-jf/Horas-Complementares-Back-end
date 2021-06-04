@@ -18,7 +18,7 @@ public enum ValuationEnum {
 		return cod;
 	}
 
-	public String getDescricao() {
+	public String getDescription() {
 		return description;
 	}
 	
