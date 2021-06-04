@@ -31,22 +31,32 @@ import br.edu.uniacademia.ativcompl.repositories.ValuationRepository;
 
 @Service
 public class DBService {
-	
-	@Autowired  private BCryptPasswordEncoder pswdEncoder;
-	@Autowired 	private AddressRepository addressRepository;
-	@Autowired 	private UserRepository userRepository;
-	@Autowired  private UserTypeRepository userTypeRepository;
-	@Autowired  private CampusRepository campusRepository;
-	@Autowired  private CourseRepository courseRepository;
-	@Autowired  private CategoryRepository categoryRepository;
-	@Autowired  private StudentRepository studentRepository;
-	@Autowired  private ActivityRepository activityRepository;
-	@Autowired  private ValuationRepository valuationRepository;
-	
+
+	@Autowired
+	private BCryptPasswordEncoder pswdEncoder;
+	@Autowired
+	private AddressRepository addressRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private UserTypeRepository userTypeRepository;
+	@Autowired
+	private CampusRepository campusRepository;
+	@Autowired
+	private CourseRepository courseRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
+	@Autowired
+	private StudentRepository studentRepository;
+	@Autowired
+	private ActivityRepository activityRepository;
+	@Autowired
+	private ValuationRepository valuationRepository;
+
 	public void instatiateTestDatabase() throws ParseException {
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		
+
 //		Address addr1 = new Address("Rua I", "621", "Jardim Itália II", "Uberaba"); 
 //		Address addr2 = new Address("Rua Primavera", "560", "Baixa da Colina", "Rio Branco");
 //		Address addr3 = new Address("Rua Major Izidoro Jerônimo da Rocha", "450","Jacarecica", "Maceió");
@@ -67,71 +77,102 @@ public class DBService {
 		Address addr18 = new Address("Quadra CLS 110 Bloco B", "986", "Asa Sul", "Brasília");
 		Address addr19 = new Address("Rua Severina Batista Andrade Goulart", "657", "Novo Horizonte", "Crato");
 		Address addr20 = new Address("Rua Gravataí", "864", "Potengi", "Natal");
-				
-		
+
 		// Coordenador: "Sistemas de Informação" e "Engenharia de Software"
-		User user1 = new User("375.577.622-74", "Vitória Carolina Barbosa", "vitoriacarolinabarbosa-96@lphbrasil.com.br", pswdEncoder.encode("UQk4wSoai7"));
+		User user1 = new User("375.577.622-74", "Vitória Carolina Barbosa",
+				"vitoriacarolinabarbosa-96@lphbrasil.com.br", pswdEncoder.encode("UQk4wSoai7"));
+		user1.addProfile(ProfileEnum.ADMIN);
 		// Supervisor: "Sistemas de Informação" e "Engenharia de Software"
-		User user2 = new User("124.906.495-31", "Guilherme Samuel Pires", "guilhermesamuelpires@cedda.com.br", pswdEncoder.encode("1XbTTe9udg"));
-		
+		User user2 = new User("124.906.495-31", "Guilherme Samuel Pires", "guilhermesamuelpires@cedda.com.br",
+				pswdEncoder.encode("1XbTTe9udg"));
+		user2.addProfile(ProfileEnum.ADMIN);
 		// Coordenador: "Administração"
-		User user3 = new User("441.377.809-00", "Agatha Brenda Moreira", "agathabrendamoreira@pubdesign.com.br", pswdEncoder.encode("p4x2RimGji"));
+		User user3 = new User("441.377.809-00", "Agatha Brenda Moreira", "agathabrendamoreira@pubdesign.com.br",
+				pswdEncoder.encode("p4x2RimGji"));
+		user3.addProfile(ProfileEnum.ADMIN);
 		// Supervisor: "Administração"
-		User user4 = new User("420.790.053-59", "Joana Carolina Souza", "joanacarolinasouza@jbtc.com", pswdEncoder.encode("4ld5o8RYYb")); 
-
+		User user4 = new User("420.790.053-59", "Joana Carolina Souza", "joanacarolinasouza@jbtc.com",
+				pswdEncoder.encode("4ld5o8RYYb"));
+		user4.addProfile(ProfileEnum.ADMIN);
 		// Coordenador: "Nutrição" e "Fisioterapia"
-		User user5 = new User("169.588.437-03", "Bernardo Anthony Davi Drumond", "bernardoanthonydavidrumond-77@raya3.com.br", pswdEncoder.encode("W2BRb4G4Qz"));
+		User user5 = new User("169.588.437-03", "Bernardo Anthony Davi Drumond",
+				"bernardoanthonydavidrumond-77@raya3.com.br", pswdEncoder.encode("W2BRb4G4Qz"));
+		user5.addProfile(ProfileEnum.ADMIN);
 		// Supervisor: "Nutrição" e "Fisioterapia"
-		User user6 = new User("272.659.622-30", "Isabel Renata Agatha Pinto", "isabelrenataagathapinto@charquesorocaba.com.br", pswdEncoder.encode("ILyZyTXflo"));
-
+		User user6 = new User("272.659.622-30", "Isabel Renata Agatha Pinto",
+				"isabelrenataagathapinto@charquesorocaba.com.br", pswdEncoder.encode("ILyZyTXflo"));
+		user6.addProfile(ProfileEnum.ADMIN);
 		// Coordenador: "Teologia" e "Filosofia"
 		// Supervisor: "Teologia" e "Filosofia"
-		User user7 = new User("267.364.255-22", "Luiz Kaique Isaac Jesus", "luizkaiqueisaacjesus@budsoncorporation.com", pswdEncoder.encode("owX8j6ltA0"));
-		
-
+		User user7 = new User("267.364.255-22", "Luiz Kaique Isaac Jesus", "luizkaiqueisaacjesus@budsoncorporation.com",
+				pswdEncoder.encode("owX8j6ltA0"));
+		user7.addProfile(ProfileEnum.ADMIN);
 		// Administador e Aluno "Sistemas de Informação"
-		User user8 = new User("017.728.964-38", "Nathan Noah Thiago da Costa", "nathannoahthiagodacosta@esplanadaviagens.com.br", pswdEncoder.encode("MN98AOw70K"));
-
+		User user8 = new User("017.728.964-38", "Nathan Noah Thiago da Costa",
+				"nathannoahthiagodacosta@esplanadaviagens.com.br", pswdEncoder.encode("MN98AOw70K"));
+		user8.addProfile(ProfileEnum.AGENT);
+		user8.addProfile(ProfileEnum.USER);
 		// Alunos:
 		// "Sistemas de Informação"
-		User user9 = new User("824.973.055-01", "Diogo Raul Silva", "diogoraulsilva-78@digen.com.br", pswdEncoder.encode("D7Zi2H17rW"));
-
+		User user9 = new User("824.973.055-01", "Diogo Raul Silva", "diogoraulsilva-78@digen.com.br",
+				pswdEncoder.encode("D7Zi2H17rW"));
+		user9.addProfile(ProfileEnum.USER);
 		// "Engenharia de Software"
-		User user10 = new User("770.164.986-70", "Rafaela Clara Bárbara da Rocha", "rrafaelaclarabarbaradarocha@candello.abv.br", pswdEncoder.encode("O4bOFIrC6U"));
-		User user11 = new User("634.546.494-55", "Paulo Toledo Atividades Complementares", "ptoledo.bsices@gmail.com", pswdEncoder.encode("4RuW0MAPLb"));
+		User user10 = new User("770.164.986-70", "Rafaela Clara Bárbara da Rocha",
+				"rrafaelaclarabarbaradarocha@candello.abv.br", pswdEncoder.encode("O4bOFIrC6U"));
+		user10.addProfile(ProfileEnum.USER);
+		User user11 = new User("634.546.494-55", "Paulo Toledo Atividades Complementares", "ptoledo.bsices@gmail.com",
+				pswdEncoder.encode("4RuW0MAPLb"));
+		user11.addProfile(ProfileEnum.USER);
 		
 		// "Administração"
-		User user12 = new User("193.628.382-49", "Antonella Heloise Aragão", "antonellaheloisearagao_@grupoitamaraty.com.br", pswdEncoder.encode("SDAmsNgDEy"));
-		User user13 = new User("759.012.025-11", "Milena Nicole Ester Melo", "milenanicoleestermelo-70@ouserTipolock.com", pswdEncoder.encode("KiDJmNXmd4"));
-		User user14 = new User("558.108.283-96", "Ruan Pedro Viana", "ruanpedroviana..ruanpedroviana@anbima.com.br", pswdEncoder.encode("QP8Eg0Y7Pw"));
+		User user12 = new User("193.628.382-49", "Antonella Heloise Aragão",
+				"antonellaheloisearagao_@grupoitamaraty.com.br", pswdEncoder.encode("SDAmsNgDEy"));
+		user12.addProfile(ProfileEnum.USER);
+		User user13 = new User("759.012.025-11", "Milena Nicole Ester Melo",
+				"milenanicoleestermelo-70@ouserTipolock.com", pswdEncoder.encode("KiDJmNXmd4"));
+		user13.addProfile(ProfileEnum.USER);
+		User user14 = new User("558.108.283-96", "Ruan Pedro Viana", "ruanpedroviana..ruanpedroviana@anbima.com.br",
+				pswdEncoder.encode("QP8Eg0Y7Pw"));
+		user14.addProfile(ProfileEnum.USER);
 		
 		// "Nutrição"
-		User user15 = new User("020.984.203-23", "Lucas Oliver das Neves", "lucasoliverdasneves__lucasoliverdasneves@zoomfoccus.com.br", pswdEncoder.encode("FoeKiXm0ZB"));
-		User user16 = new User("955.586.448-93", "Tomás Paulo Jesus", "ttomaspaulojesus@nelsoncosta.com.br", pswdEncoder.encode("N05yZtdyMU"));
+		User user15 = new User("020.984.203-23", "Lucas Oliver das Neves",
+				"lucasoliverdasneves__lucasoliverdasneves@zoomfoccus.com.br", pswdEncoder.encode("FoeKiXm0ZB"));
+		user15.addProfile(ProfileEnum.USER);
+		User user16 = new User("955.586.448-93", "Tomás Paulo Jesus", "ttomaspaulojesus@nelsoncosta.com.br",
+				pswdEncoder.encode("N05yZtdyMU"));
+		user16.addProfile(ProfileEnum.USER);
 		
 		// "Fisioterapia"
-		User user17 = new User("348.646.029-30", "Pedro Henrique Diego Roberto Martins", "pedrohenriquediegorobertomartins..pedrohenriquediegorobertomartins@tec3.com.br", pswdEncoder.encode("LzmEdCpfRp"));
-		User user18 = new User("845.932.684-51", "Osvaldo Edson Vieira", "osvaldoedsonvieira__osvaldoedsonvieira@focustg.com.br", pswdEncoder.encode("eqNBljRNau"));
+		User user17 = new User("348.646.029-30", "Pedro Henrique Diego Roberto Martins",
+				"pedrohenriquediegorobertomartins..pedrohenriquediegorobertomartins@tec3.com.br",
+				pswdEncoder.encode("LzmEdCpfRp"));
+		user17.addProfile(ProfileEnum.USER);
+		User user18 = new User("845.932.684-51", "Osvaldo Edson Vieira",
+				"osvaldoedsonvieira__osvaldoedsonvieira@focustg.com.br", pswdEncoder.encode("eqNBljRNau"));
+		user18.addProfile(ProfileEnum.USER);
 		
 		// "Teologia"
-		User user19 = new User("459.518.706-82", "Joaquim Lucca da Cruz", "joaquimluccadacruz__joaquimluccadacruz@callan.com.br", pswdEncoder.encode("r9EngPfORH"));
+		User user19 = new User("459.518.706-82", "Joaquim Lucca da Cruz",
+				"joaquimluccadacruz__joaquimluccadacruz@callan.com.br", pswdEncoder.encode("r9EngPfORH"));
+		user19.addProfile(ProfileEnum.USER);
 		
 		// "Filosofia"
-		User user20 = new User("685.776.221-00", "João Miguel da Conceição", "joaomigueldaconceicao__joaomigueldaconceicao@carlosalbertoleite.com.br", pswdEncoder.encode("qMEWbTgXku"));
+		User user20 = new User("685.776.221-00", "João Miguel da Conceição",
+				"joaomigueldaconceicao__joaomigueldaconceicao@carlosalbertoleite.com.br",
+				pswdEncoder.encode("qMEWbTgXku"));
+		user20.addProfile(ProfileEnum.USER);
 
 		UserType userTipo1 = new UserType(null, "Coordenador");
-		userTipo1.addProfile(ProfileEnum.ADMIN);
 		UserType userTipo2 = new UserType(null, "Supervisor");
-		userTipo2.addProfile(ProfileEnum.ADMIN);
 		UserType userTipo3 = new UserType(null, "Administrador");
-		userTipo3.addProfile(ProfileEnum.AGENT);
 		UserType userTipo4 = new UserType(null, "Aluno");
-		userTipo4.addProfile(ProfileEnum.USER);
-		
+
 		Campus cmp1 = new Campus(null, "Academia");
 		Campus cmp2 = new Campus(null, "Arnaldo Janssen");
 		Campus cmp3 = new Campus(null, "Seminário Santo Antônio");
-		
+
 		Course crs1 = new Course(null, "Sistemas de Informação", 216.0, cmp1);
 		Course crs2 = new Course(null, "Engenharia de Software", 144.0, cmp1);
 		Course crs3 = new Course(null, "Administração", 216.0, cmp1);
@@ -139,7 +180,7 @@ public class DBService {
 		Course crs5 = new Course(null, "Fisioterapia", 180.0, cmp2);
 		Course crs6 = new Course(null, "Teologia", 320.0, cmp3);
 		Course crs7 = new Course(null, "Filosofia", 180.0, cmp3);
-		
+
 		Category cat1 = new Category(null, "Exercício de Monitoria");
 		Category cat2 = new Category(null, "Iniciação Científica");
 		Category cat3 = new Category(null, "Curso de Extensão");
@@ -160,17 +201,19 @@ public class DBService {
 		Student stu11 = new Student(sdf.parse("02/02/2017"), user18, addr18);
 		Student stu12 = new Student(sdf.parse("02/02/2018"), user19, addr19);
 		Student stu13 = new Student(sdf.parse("02/08/2018"), user20, addr20);
-		
-		
-		
+
 		Activity at1 = new Activity(null, "Curso de Phyton", sdf.parse("15/05/2021"), 12.0, 5.0, false, "", stu1, cat6);
-		Activity at2 = new Activity(null, "Curso de Inglês", sdf.parse("20/02/2020"), 1200.0, 640.0, false, "", stu2, cat5);
-		Activity at3 = new Activity(null, "Curso de PHP", sdf.parse("20/04/2021"), 6.0, 6.0, true, "abc12es381a", stu3,  cat6);
-		Activity at4 = new Activity(null, "Palestra Senhor dos Aneis", sdf.parse("28/08/2021"), 3.0, 3.0, true, "25e23rty31hj", stu4, cat4);
-		
+		Activity at2 = new Activity(null, "Curso de Inglês", sdf.parse("20/02/2020"), 1200.0, 640.0, false, "", stu2,
+				cat5);
+		Activity at3 = new Activity(null, "Curso de PHP", sdf.parse("20/04/2021"), 6.0, 6.0, true, "abc12es381a", stu3,
+				cat6);
+		Activity at4 = new Activity(null, "Palestra Senhor dos Aneis", sdf.parse("28/08/2021"), 3.0, 3.0, true,
+				"25e23rty31hj", stu4, cat4);
+
 		Valuation valuation1 = new Valuation(null, ValuationEnum.ACEITAR, "Muito bom", at4);
-		Valuation valuation2 = new Valuation(null, ValuationEnum.NEGAR_TOTAL, "Essa palestra não condiz com o curso", at3);
-			
+		Valuation valuation2 = new Valuation(null, ValuationEnum.NEGAR_TOTAL, "Essa palestra não condiz com o curso",
+				at3);
+
 		user1.getUserTypeList().addAll(Arrays.asList(userTipo1));
 		user2.getUserTypeList().addAll(Arrays.asList(userTipo2));
 		user3.getUserTypeList().addAll(Arrays.asList(userTipo1));
@@ -191,12 +234,13 @@ public class DBService {
 		user18.getUserTypeList().addAll(Arrays.asList(userTipo4));
 		user19.getUserTypeList().addAll(Arrays.asList(userTipo4));
 		user20.getUserTypeList().addAll(Arrays.asList(userTipo4));
-		
+
 		userTipo1.getUsers().addAll(Arrays.asList(user1, user3, user5, user7));
 		userTipo2.getUsers().addAll(Arrays.asList(user2, user4, user6, user7));
 		userTipo3.getUsers().addAll(Arrays.asList(user8));
-		userTipo4.getUsers().addAll(Arrays.asList(user8, user9, user10, user11, user12, user13, user14, user15, user16, user17, user18, user19, user20));
-		
+		userTipo4.getUsers().addAll(Arrays.asList(user8, user9, user10, user11, user12, user13, user14, user15, user16,
+				user17, user18, user19, user20));
+
 		user1.getCourses().addAll(Arrays.asList(crs1, crs2));
 		user2.getCourses().addAll(Arrays.asList(crs1, crs2));
 		user3.getCourses().addAll(Arrays.asList(crs3));
@@ -218,7 +262,7 @@ public class DBService {
 		user18.getCourses().addAll(Arrays.asList(crs5));
 		user19.getCourses().addAll(Arrays.asList(crs6));
 		user20.getCourses().addAll(Arrays.asList(crs7));
-		
+
 		crs1.getUsers().addAll(Arrays.asList(user1, user2, user8, user9));
 		crs2.getUsers().addAll(Arrays.asList(user1, user2, user10, user11));
 		crs3.getUsers().addAll(Arrays.asList(user3, user4, user12, user13, user14));
@@ -226,20 +270,23 @@ public class DBService {
 		crs5.getUsers().addAll(Arrays.asList(user5, user6, user17, user18));
 		crs6.getUsers().addAll(Arrays.asList(user7, user19));
 		crs7.getUsers().addAll(Arrays.asList(user7, user20));
-		
+
 		cmp1.getCourses().addAll(Arrays.asList(crs1, crs2, crs3));
 		cmp2.getCourses().addAll(Arrays.asList(crs4, crs5));
 		cmp3.getCourses().addAll(Arrays.asList(crs6, crs7));
-				
-		addressRepository.saveAll(Arrays.asList(addr8, addr9, addr10, addr11, addr12, addr13, addr14, addr15, addr16, addr17, addr18, addr19, addr20));
+
+		addressRepository.saveAll(Arrays.asList(addr8, addr9, addr10, addr11, addr12, addr13, addr14, addr15, addr16,
+				addr17, addr18, addr19, addr20));
 		userTypeRepository.saveAll(Arrays.asList(userTipo1, userTipo2, userTipo3, userTipo4));
 		campusRepository.saveAll(Arrays.asList(cmp1, cmp2, cmp3));
 		courseRepository.saveAll(Arrays.asList(crs1, crs2, crs3, crs4, crs5, crs6, crs7));
-		userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12, user13, user14, user15, user16, user17, user18, user19, user20));
+		userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10,
+				user11, user12, user13, user14, user15, user16, user17, user18, user19, user20));
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6));
-		studentRepository.saveAll(Arrays.asList(stu1, stu2, stu3, stu4, stu5, stu6, stu7, stu8, stu9, stu10, stu11, stu12, stu13));
+		studentRepository.saveAll(
+				Arrays.asList(stu1, stu2, stu3, stu4, stu5, stu6, stu7, stu8, stu9, stu10, stu11, stu12, stu13));
 		valuationRepository.saveAll(Arrays.asList(valuation1, valuation2));
 		activityRepository.saveAll(Arrays.asList(at1, at2, at3, at4));
-		
+
 	}
 }

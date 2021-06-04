@@ -2,9 +2,15 @@ package br.edu.uniacademia.ativcompl.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,39 +21,37 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.edu.uniacademia.ativcompl.domain.enums.ProfileEnum;
+
 @Entity
 @Table(name = "tb_users")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String registration;
 	private String name;
 	private String email;
-	
+
 	@JsonIgnore
 	private String password;
-				
-	@ManyToMany
-	@JoinTable(name = "tb_users_user_types",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "userType_id")
-	)
-	private List<UserType> userTypeList = new ArrayList<>();
-	
-	
+
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "tb_profiles")
+	private Set<Integer> profiles = new HashSet<>();
 
 	@ManyToMany
-	@JoinTable(name = "tb_user_courses",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "course_id")
-	)
+	@JoinTable(name = "tb_users_user_types", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "userType_id"))
+	private List<UserType> userTypeList = new ArrayList<>();
+
+	@ManyToMany
+	@JoinTable(name = "tb_user_courses", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private List<Course> courses = new ArrayList<>();
-	
-	
-	public User() {	}
+
+	public User() {
+	}
 
 	public User(Long id, String registration, String name, String email, String password) {
 		super();
@@ -57,7 +61,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.password = password;
 	}
-	
+
 	public User(String registration, String name, String email, String password) {
 		super();
 		this.registration = registration;
@@ -65,7 +69,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.password = password;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -105,7 +109,15 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-		
+
+	public Set<ProfileEnum> getProfiles() {
+		return profiles.stream().map(p -> ProfileEnum.toEnum(p)).collect(Collectors.toSet());
+	}
+
+	public void addProfile(ProfileEnum profile) {
+		profiles.add(profile.getCod());
+	}
+
 	public List<UserType> getUserTypeList() {
 		return userTypeList;
 	}
@@ -146,5 +158,5 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

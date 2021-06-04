@@ -2,15 +2,9 @@ package br.edu.uniacademia.ativcompl.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +12,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import br.edu.uniacademia.ativcompl.domain.enums.ProfileEnum;
 
 @Entity
 @Table(name = "tb_user_types")
@@ -30,17 +22,13 @@ public class UserType implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String type;
-	
+
 	@JsonIgnore
 	@ManyToMany(mappedBy = "userTypeList")
 	private List<User> user = new ArrayList<>();
-	
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "tb_profiles")
-	private Set<Integer> profiles = new HashSet<>();
-	
-	public UserType() {}
 
+	public UserType() {
+	}
 
 	public UserType(Long id, String type) {
 		super();
@@ -48,43 +36,29 @@ public class UserType implements Serializable {
 		this.type = type;
 	}
 
-
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
 	public String getType() {
 		return type;
 	}
 
-
 	public void setType(String type) {
 		this.type = type;
-	}
-	
-	public Set<ProfileEnum> getProfiles(){
-		return profiles.stream().map(p -> ProfileEnum.toEnum(p)).collect(Collectors.toSet());
-	}
-	
-	public void addProfile(ProfileEnum profile) {
-		profiles.add(profile.getCod());
 	}
 
 	public List<User> getUsers() {
 		return user;
 	}
 
-
 	public void setUsers(List<User> user) {
 		this.user = user;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -93,7 +67,6 @@ public class UserType implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -111,6 +84,5 @@ public class UserType implements Serializable {
 			return false;
 		return true;
 	}
-		
-}
 
+}
