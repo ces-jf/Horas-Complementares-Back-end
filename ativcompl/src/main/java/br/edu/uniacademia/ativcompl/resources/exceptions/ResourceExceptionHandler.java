@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import br.edu.uniacademia.ativcompl.services.exceptions.AuthorizationException;
 import br.edu.uniacademia.ativcompl.services.exceptions.DataIntegrityException;
+import br.edu.uniacademia.ativcompl.services.exceptions.FileException;
 import br.edu.uniacademia.ativcompl.services.exceptions.ObjectNotFoundException;
 
 @ControllerAdvice
@@ -51,4 +52,11 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
 	}
 
+	@ExceptionHandler(FileException.class)
+	public ResponseEntity<StandardError> file(FileException e, HttpServletRequest request) {
+
+		StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
+				"Erro de arquivo", e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	}
 }
