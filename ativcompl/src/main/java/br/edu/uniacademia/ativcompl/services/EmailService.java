@@ -5,6 +5,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.mail.SimpleMailMessage;
 
 import br.edu.uniacademia.ativcompl.domain.Activity;
+import br.edu.uniacademia.ativcompl.domain.User;
 
 public interface EmailService {
 
@@ -16,6 +17,6 @@ public interface EmailService {
 		
 		void sendHtmlEmail(MimeMessage msg);
 
-//		void sendNewPasswordEmail(User user, String newPass);
+		void sendNewPasswordEmail(User user, String newPass);
 
 }

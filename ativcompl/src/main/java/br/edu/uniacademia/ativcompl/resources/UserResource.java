@@ -35,6 +35,12 @@ public class UserResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+//	@RequestMapping(value="/{registration}", method=RequestMethod.GET)
+//	public ResponseEntity<User> find(@PathVariable(value="value") String registration) {
+//		User obj = service.findByRegistration(registration);
+//		return ResponseEntity.ok().body(obj);
+//	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody UserDTO objDto){
 		User obj = service.fromDTO(objDto);

@@ -39,6 +39,18 @@ public class UserService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + User.class.getName()));
 	}
+	
+//	public User findByRegistration(String registration) {
+//		
+//		UserSS userLogged = UserLoggedService.authenticated();
+//		if (userLogged == null || !userLogged.hasRole(ProfileEnum.ADMIN) && !registration.equals(userLogged.getId())) {
+//			throw new AuthorizationException("Acesso negado");
+//		}
+//
+//		Optional<User> obj = repo.findById(userLogged.getId());
+//		return obj.orElseThrow(() -> new ObjectNotFoundException(
+//				"Objeto não encontrado! Id: " + userLogged.getId() + ", Tipo: " + User.class.getName()));
+//	}
 
 	public User insert(User obj) {
 		obj.setId(null);

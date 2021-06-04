@@ -121,8 +121,8 @@ public class DBService {
 		User user10 = new User("770.164.986-70", "Rafaela Clara Bárbara da Rocha",
 				"rrafaelaclarabarbaradarocha@candello.abv.br", pswdEncoder.encode("O4bOFIrC6U"));
 		user10.addProfile(ProfileEnum.USER);
-		User user11 = new User("634.546.494-55", "Paulo Toledo Atividades Complementares", "ptoledo.bsices@gmail.com",
-				pswdEncoder.encode("4RuW0MAPLb"));
+		User user11 = new User("4321", "Paulo Toledo Atividades Complementares", "ptoledo.bsices@gmail.com",
+				pswdEncoder.encode("1234"));
 		user11.addProfile(ProfileEnum.USER);
 		
 		// "Administração"
