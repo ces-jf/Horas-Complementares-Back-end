@@ -104,18 +104,18 @@ public class DBService {
 		user6.addProfile(ProfileEnum.ADMIN);
 		// Coordenador: "Teologia" e "Filosofia"
 		// Supervisor: "Teologia" e "Filosofia"
-		User user7 = new User("267.364.255-22", "Luiz Kaique Isaac Jesus", "luizkaiqueisaacjesus@budsoncorporation.com",
-				pswdEncoder.encode("owX8j6ltA0"));
+		User user7 = new User("267.364.255-22", "Luiz Kaique Isaac Jesus", "l@l.com",
+				pswdEncoder.encode("1234"));
 		user7.addProfile(ProfileEnum.ADMIN);
 		// Administador e Aluno "Sistemas de Informação"
 		User user8 = new User("017.728.964-38", "Nathan Noah Thiago da Costa",
-				"nathannoahthiagodacosta@esplanadaviagens.com.br", pswdEncoder.encode("MN98AOw70K"));
+				"n@n.com.br", pswdEncoder.encode("1234"));
 		user8.addProfile(ProfileEnum.AGENT);
 		user8.addProfile(ProfileEnum.USER);
 		// Alunos:
 		// "Sistemas de Informação"
-		User user9 = new User("824.973.055-01", "Diogo Raul Silva", "diogoraulsilva-78@digen.com.br",
-				pswdEncoder.encode("D7Zi2H17rW"));
+		User user9 = new User("824.973.055-01", "Diogo Raul Silva", "d@d.com.br",
+				pswdEncoder.encode("1234"));
 		user9.addProfile(ProfileEnum.USER);
 		// "Engenharia de Software"
 		User user10 = new User("770.164.986-70", "Rafaela Clara Bárbara da Rocha",
