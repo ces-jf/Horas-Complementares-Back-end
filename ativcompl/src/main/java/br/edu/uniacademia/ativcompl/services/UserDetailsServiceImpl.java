@@ -17,12 +17,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private UserRepository repo;
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User user = repo.findByEmail(email);
+	public UserDetails loadUserByUsername(String registration) throws UsernameNotFoundException {
+		User user = repo.findByRegistration(registration);
 		if (user == null) {
-			throw new UsernameNotFoundException(email);
+			throw new UsernameNotFoundException(registration);
 		}
-		return new UserSS(user.getId(), user.getEmail(), user.getPassword(), user.getProfiles());
+		return new UserSS(user.getId(), user.getRegistration(), user.getPassword(), user.getProfiles());
 	}
 
 }

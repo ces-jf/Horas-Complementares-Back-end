@@ -161,7 +161,7 @@ public class DBService {
 		// "Filosofia"
 		User user20 = new User("685.776.221-00", "João Miguel da Conceição",
 				"joaomigueldaconceicao__joaomigueldaconceicao@carlosalbertoleite.com.br",
-				pswdEncoder.encode("qMEWbTgXku"));
+				pswdEncoder.encode("1234"));
 		user20.addProfile(ProfileEnum.USER);
 
 		UserType userTipo1 = new UserType(null, "Coordenador");
