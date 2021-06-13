@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@toledo-paulo 
-toledo-paulo
-/
-ativcompl
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-ativcompl/.gitignore
-@toledo-paulo
-toledo-paulo Initial commit
-Latest commit dc90403 now
- History
- 1 contributor
-104 lines (76 sloc)  1.57 KB
- 
 # Logs
 logs
 *.log
