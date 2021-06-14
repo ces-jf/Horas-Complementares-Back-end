@@ -1,7 +1,7 @@
 const moment = require('moment')
 
 module.exports = app => {
-    const getActivities = (req, res) => {
+    const findAllDeadline= (req, res) => {
         const date = req.query.date ? req.query.date
             : moment().endOf('day').toDate()
 
@@ -10,6 +10,21 @@ module.exports = app => {
             .where('start', '<=', date)
             .orderBy('start')
             .then(activities => res.json(activities))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findAll = (req, res) => {
+        app.db('tb_activities')
+            .where({ userId: req.user.id })
+            .orderBy('start')
+            .then(activities => res.json(activities))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findById = (req, res) => {
+        app.db('tb_activities')
+            .where({ id: req.params.id, userId: req.user.id })
+            .then(categories => res.json(categories))
             .catch(err => res.status(400).json(err))
     }
 
@@ -65,5 +80,5 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { getActivities, save, remove, toggleActivity }
+    return { findAll, findById, findAllDeadline, save, remove, toggleActivity }
 }

@@ -17,6 +17,12 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(app.api.activity.toggleActivity)
 
+    app.route('/activities/:id/date')
+        .all(app.config.passport.authenticate())
+        .put(app.api.activity.findAllDeadline)
+
+
+
     //Categorias
     app.route('/categories')
         .all(app.config.passport.authenticate())
