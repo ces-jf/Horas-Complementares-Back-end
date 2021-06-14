@@ -11,6 +11,9 @@ exports.up = function(knex, Promise) {
         table.bigint('userId')
             .references('id')
             .inTable('tb_users').notNull()
+        table.bigint('categoryId')
+            .references('id')
+            .inTable('tb_categories').notNull()
     })
 };
 
