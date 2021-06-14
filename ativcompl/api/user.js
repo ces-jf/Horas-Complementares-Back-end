@@ -15,7 +15,7 @@ module.exports = app => {
                 .insert({ 
                     name: req.body.name, 
                     registration: req.body.registration, 
-                    email: req.body.email, 
+                    email: req.body.email.toLowerCase(), 
                     password 
                 })
                 .then(_ => res.status(204).send())
