@@ -51,4 +51,28 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .get(app.api.address.findByUserId)
 
+    // Campus
+    app.route('/campus')
+        .all(app.config.passport.authenticate())
+        .get(app.api.campus.findAll)
+        .post(app.api.campus.save)
+
+    app.route('/campus/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.campus.findById)
+        .delete(app.api.campus.remove)
+        .put(app.api.campus.update)
+
+    //Cursos
+    app.route('/courses')
+        .all(app.config.passport.authenticate())
+        .get(app.api.course.findAll)
+        .post(app.api.course.save)
+
+    app.route('/courses/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.course.findById)
+        .delete(app.api.course.remove)
+        .put(app.api.course.update)
+
 }
