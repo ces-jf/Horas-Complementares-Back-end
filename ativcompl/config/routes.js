@@ -21,8 +21,6 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(app.api.activity.findAllDeadline)
 
-
-
     //Categorias
     app.route('/categories')
         .all(app.config.passport.authenticate())
@@ -74,5 +72,33 @@ module.exports = app => {
         .get(app.api.course.findById)
         .delete(app.api.course.remove)
         .put(app.api.course.update)
+
+    //Usuário X Curso
+    app.route('/users_courses')
+        .all(app.config.passport.authenticate())
+        .get(app.api.user_course.findAll)
+        .post(app.api.user_course.save)
+
+    app.route('/users_courses/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.user_course.findById)
+        .delete(app.api.user_course.remove)
+        .put(app.api.user_course.updateCourse)
+
+    app.route('/users_courses/:id/usertype')
+        .all(app.config.passport.authenticate())
+        .put(app.api.user_course.updateUserType)
+
+    //Tipo de Usuário
+    app.route('/usertypes')
+        .all(app.config.passport.authenticate())
+        .get(app.api.usertype.findAll)
+        .post(app.api.usertype.save)
+
+    app.route('/usertypes/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.usertype.findById)
+        .delete(app.api.usertype.remove)
+        .put(app.api.usertype.update)
 
 }
