@@ -47,4 +47,8 @@ module.exports = app => {
         .delete(app.api.address.remove)
         .put(app.api.address.update)
 
+    app.route('/address')
+        .all(app.config.passport.authenticate())
+        .get(app.api.address.findByUserId)
+
 }
