@@ -73,6 +73,10 @@ module.exports = app => {
         .delete(app.api.course.remove)
         .put(app.api.course.update)
 
+    app.route('/courses/campus/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.course.findByCampus)
+
     //Usuário X Curso
     app.route('/users_courses')
         .all(app.config.passport.authenticate())
@@ -102,6 +106,10 @@ module.exports = app => {
         .put(app.api.usertype.update)
 
     //Perfil de usuário
+    app.route('/profile')
+        .all(app.config.passport.authenticate())
+        .get(app.api.profile.findAll)
+
     app.route('/profile/:id')
         .all(app.config.passport.authenticate())
         .get(app.api.profile.find)

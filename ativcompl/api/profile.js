@@ -1,5 +1,11 @@
 module.exports = app => {
-    
+    const findAll = (req, res) => {
+        app.db('tb_users')
+            .where({ id: req.user.id })
+            .then(user => res.json(user))
+            .catch(err => res.status(400).json(err))
+    }
+
     const find = (req, res) => {
         app.db('tb_users')
             .where({ id: req.params.id })
@@ -28,5 +34,5 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { find, update, updatePassword }
+    return { find, findAll, update, updatePassword }
 }

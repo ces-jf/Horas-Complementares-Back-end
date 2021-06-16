@@ -9,6 +9,14 @@ module.exports = app => {
     const findById = (req, res) => {
         app.db('tb_courses')
             .where({ id: req.params.id })
+            .then(course => res.json(course))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findByCampus = (req, res) => {
+        app.db('tb_courses')
+            .where({ campusId: req.params.id })
+            .orderBy('name')
             .then(courses => res.json(courses))
             .catch(err => res.status(400).json(err))
     }
@@ -51,5 +59,5 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { findAll, findById, save, remove, update }
+    return { findAll, findById, findByCampus, save, remove, update }
 }
