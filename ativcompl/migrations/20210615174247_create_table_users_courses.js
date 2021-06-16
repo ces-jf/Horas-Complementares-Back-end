@@ -2,6 +2,7 @@
 exports.up = function (knex, Promise) {
     return knex.schema.createTable('tb_users_courses', table => {
         table.increments('id').primary()
+        table.datetime('startCourse')
         table.bigint('userId')
             .references('id')
             .inTable('tb_users').notNull()

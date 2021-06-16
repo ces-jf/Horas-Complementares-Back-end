@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
         table.string('registration').notNull().unique()
         table.string('email').notNull().unique()
         table.string('password').notNull()
-        table.datetime('startCourse')
     })
 };
 
