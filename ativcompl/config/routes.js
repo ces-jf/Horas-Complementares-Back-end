@@ -101,4 +101,11 @@ module.exports = app => {
         .delete(app.api.usertype.remove)
         .put(app.api.usertype.update)
 
+    //Perfil de usuário
+    app.route('/profile/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.profile.find)
+        .put(app.api.profile.update)
+        .put(app.api.profile.updatePassword)
+
 }
