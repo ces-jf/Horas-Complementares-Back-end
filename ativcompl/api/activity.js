@@ -80,5 +80,25 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { findAll, findById, findAllDeadline, save, remove, toggleActivity }
+    const findAllTeste = (req, res) => {
+        app.db('tb_activities')
+            .orderBy('start')
+            .then(activities => res.json(activities))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const saveTeste = (req, res) => {
+        if (!req.body.name.trim()) {
+            return res.status(400).send('O nome da atividade é um campo obrigatório')
+        }
+
+        req.body.userId = 1
+
+        app.db('tb_activities')
+            .insert(req.body)
+            .then(_ => res.status(204).send())
+            .catch(err => res.status(400).json(err))
+    }
+
+    return { findAll, findById, findAllDeadline, save, remove, toggleActivity, findAllTeste, saveTeste }
 }

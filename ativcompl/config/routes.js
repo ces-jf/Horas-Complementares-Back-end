@@ -3,6 +3,10 @@ module.exports = app => {
     app.post('/signin', app.api.auth.signin)
 
     // Atividades
+    app.route('/activities/teste')
+        .get(app.api.activity.findAllTeste)
+        .post(app.api.activity.saveTeste)
+
     app.route('/activities')
         .all(app.config.passport.authenticate())
         .get(app.api.activity.findAll)
@@ -80,8 +84,12 @@ module.exports = app => {
     //Usuário X Curso
     app.route('/users_courses')
         .all(app.config.passport.authenticate())
-        .get(app.api.user_course.findAll)
+        .get(app.api.user_course.findUserCourse)
         .post(app.api.user_course.save)
+        
+        app.route('/users_courses/all')
+        .all(app.config.passport.authenticate())
+        .get(app.api.user_course.findAll)
 
     app.route('/users_courses/:id')
         .all(app.config.passport.authenticate())
