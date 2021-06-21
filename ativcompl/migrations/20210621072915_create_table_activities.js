@@ -1,12 +1,12 @@
 
-exports.up = function(knex, Promise) {
+exports.up = function (knex, Promise) {
     return knex.schema.createTable('tb_activities', table => {
         table.increments('id').primary()
         table.string('name').notNull()
-        table.datetime('start')
+        table.datetime('start').notNull()
+        table.datetime('end')
         table.double('workload').notNull()
-        table.double('hoursCompleted')
-        table.boolean('closed')
+        table.boolean('completed')
         table.string('certificate')
         table.bigint('userId')
             .references('id')
@@ -14,9 +14,12 @@ exports.up = function(knex, Promise) {
         table.bigint('categoryId')
             .references('id')
             .inTable('tb_categories').notNull()
+        table.bigint('courseId')
+            .references('id')
+            .inTable('tb_courses').notNull()
     })
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
     return knex.schema.dropTable('tb_activities')
 };

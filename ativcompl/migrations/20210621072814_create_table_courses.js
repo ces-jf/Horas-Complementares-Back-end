@@ -3,9 +3,6 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary()
         table.string('name').notNull()
         table.double('workload')
-        table.bigint('campusId')
-            .references('id')
-            .inTable('tb_campus').notNull()
     })
 };
 
