@@ -57,6 +57,7 @@ module.exports = app => {
             .where({ id: req.params.id, userId: req.user.id })
             .update({
                 street: req.body.street,
+                fone: req.body.fone,
                 number: req.body.number,
                 district: req.body.district,
                 city: req.body.city

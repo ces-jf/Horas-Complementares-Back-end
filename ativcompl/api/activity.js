@@ -56,10 +56,10 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    const updateActivityClosed = (req, res, closed) => {
+    const updateActivityCompleted = (req, res, completed) => {
         app.db('tb_activities')
             .where({ id: req.params.id, userId: req.user.id })
-            .update({ closed })
+            .update({ completed })
             .then(_ => res.status(204).send())
             .catch(err => res.status(400).json(err))
     }
@@ -74,8 +74,8 @@ module.exports = app => {
                     return res.status(400).send(msg)
                 }
 
-                const closed = activity.closed ? null : true
-                updateActivityClosed(req, res, closed)
+                const completed = activity.completed ? false : true
+                updateActivityCompleted(req, res, completed)
             })
             .catch(err => res.status(400).json(err))
     }

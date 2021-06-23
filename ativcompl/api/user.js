@@ -11,11 +11,13 @@ module.exports = app => {
         obterHash(req.body.password, hash => {
             const password = hash
 
+            const mail = req.body.email
+
             app.db('tb_users')
                 .insert({ 
                     name: req.body.name, 
                     registration: req.body.registration, 
-                    email: req.body.email.toLowerCase(), 
+                    email: mail.toLowerCase(),
                     password 
                 })
                 .then(_ => res.status(204).send())

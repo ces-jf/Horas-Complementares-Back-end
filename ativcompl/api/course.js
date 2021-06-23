@@ -53,7 +53,7 @@ module.exports = app => {
             .update({ 
                 name: req.body.name,
                 workload: req.body.workload,
-                campusId: req.body.campusId
+                limit: req.body.limit
              })
             .then(_ => res.status(204).send())
             .catch(err => res.status(400).json(err))
