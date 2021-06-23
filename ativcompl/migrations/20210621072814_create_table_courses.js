@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
         table.string('name').notNull()
         table.double('workload')
         table.boolean('completed')
+        table.boolean('limit')
     })
 };
 
