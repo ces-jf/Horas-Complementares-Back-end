@@ -3,8 +3,8 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary()
         table.string('name').notNull()
         table.double('workload')
+        table.double('limit')
         table.boolean('completed')
-        table.boolean('limit')
     })
 };
 
