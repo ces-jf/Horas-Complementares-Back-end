@@ -24,6 +24,7 @@ module.exports = app => {
                     name: user.name,
                     registration: user.registration,
                     email: user.email,
+                    usertypeId: user.usertypeId,
                     token: jwt.encode(payload, authSecret),
                 })
             })
