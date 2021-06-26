@@ -1,5 +1,5 @@
 
-exports.up = function (knex, Promise) {
+exports.up = (knex) => {
     return knex.schema.createTable('tb_users_courses', table => {
         table.increments('id').primary()
         table.datetime('start')
@@ -9,12 +9,9 @@ exports.up = function (knex, Promise) {
         table.bigint('courseId')
             .references('id')
             .inTable('tb_courses').notNull()
-        table.bigint('usertypeId')
-            .references('id')
-            .inTable('tb_usertypes').notNull()
     })
 };
 
-exports.down = function (knex, Promise) {
+exports.down = (knex) => {
     return knex.schema.dropTable('tb_users_courses')
 };
