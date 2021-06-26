@@ -14,11 +14,13 @@ module.exports = app => {
             const mail = req.body.email
 
             app.db('tb_users')
-                .insert({ 
-                    name: req.body.name, 
-                    registration: req.body.registration, 
+                .insert({
+                    name: req.body.name,
+                    registration: req.body.registration,
                     email: mail.toLowerCase(),
-                    password 
+                    password,
+                    avatar: req.body.avatar,
+                    usertypeId: req.body.usertypeId
                 })
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(400).json(err))
