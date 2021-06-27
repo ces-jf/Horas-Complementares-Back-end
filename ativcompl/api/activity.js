@@ -1,7 +1,15 @@
 const moment = require('moment')
 
 module.exports = app => {
-    const findAllDeadline= (req, res) => {
+    const findWorkloadCompleted = (req, res) => {
+        app.db('tb_activities')
+            .where({ userId: req.user.id })
+            .sum('workload')
+            .then(activities => res.json(activities))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findAllDeadline = (req, res) => {
         const date = req.query.date ? req.query.date
             : moment().endOf('day').toDate()
 
@@ -100,5 +108,5 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { findAll, findById, findAllDeadline, save, remove, toggleActivity, findAllTeste, saveTeste }
+    return { findAll, findById, findWorkloadCompleted, findAllDeadline, save, remove, toggleActivity, findAllTeste, saveTeste }
 }

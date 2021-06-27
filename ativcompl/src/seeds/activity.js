@@ -1,14 +1,14 @@
 
 exports.seed = (knex) => {
   // Deletes ALL existing entries
-  return knex('tb_addresses').del()
+  return knex('tb_notifications').del()
+    .then(() => knex('tb_addresses').del())
     .then(() => knex('tb_valuations').del())
-    .then(() => knex('tb_notifications').del())
     .then(() => knex('tb_users_courses').del())
-    .then(() => knex('tb_usertypes').del())
     .then(() => knex('tb_activities').del())
     .then(() => knex('tb_categories').del())
     .then(() => knex('tb_users').del())
+    .then(() => knex('tb_usertypes').del())
     .then(() => knex('tb_courses').del())
     .then(() => knex('tb_courses').insert([
       { id: 1, name: 'Sistemas de Informação', workload: 216, limit: 72 },
@@ -43,22 +43,22 @@ exports.seed = (knex) => {
       { id: 4, name: 'Curso de Extensão' },
     ])).then(() => knex('tb_users_courses').insert([
       {
-        id: 1,
+        id: 10001,
         start: "2000-02-02 00:00:00.0",
         userId: 10001,
         courseId: 1
       }, {
-        id: 2,
+        id: 10002,
         start: "2000-02-02 00:00:00.0",
         userId: 10001,
         courseId: 2
       }, {
-        id: 3,
+        id: 10003,
         start: "2000-02-02 00:00:00.0",
         userId: 10002,
         courseId: 1
       }, {
-        id: 4,
+        id: 10004,
         start: "2000-02-02 00:00:00.0",
         userId: 10002,
         courseId: 2

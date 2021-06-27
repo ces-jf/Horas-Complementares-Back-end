@@ -21,6 +21,10 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(app.api.activity.toggleActivity)
 
+    app.route('/activitiesworkload')
+        .all(app.config.passport.authenticate())
+        .get(app.api.activity.findWorkloadCompleted)
+
     app.route('/activities/:id/date')
         .all(app.config.passport.authenticate())
         .put(app.api.activity.findAllDeadline)
@@ -53,18 +57,6 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .get(app.api.address.findByUserId)
 
-    // Campus
-    app.route('/campus')
-        .all(app.config.passport.authenticate())
-        .get(app.api.campus.findAll)
-        .post(app.api.campus.save)
-
-    app.route('/campus/:id')
-        .all(app.config.passport.authenticate())
-        .get(app.api.campus.findById)
-        .delete(app.api.campus.remove)
-        .put(app.api.campus.update)
-
     //Cursos
     app.route('/courses')
         .all(app.config.passport.authenticate())
@@ -86,8 +78,8 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .get(app.api.user_course.findUserCourse)
         .post(app.api.user_course.save)
-        
-        app.route('/users_courses/all')
+
+    app.route('/users_courses/all')
         .all(app.config.passport.authenticate())
         .get(app.api.user_course.findAll)
 
@@ -123,5 +115,28 @@ module.exports = app => {
         .get(app.api.profile.find)
         .put(app.api.profile.update)
         .put(app.api.profile.updatePassword)
+
+
+    //Rotas do Administrador do Sistema
+    //Categorias
+    app.route('/categories/adm')
+        .get(app.api.category.findAll)
+        .post(app.api.category.save)
+
+    //Cursos
+    app.route('/courses/adm')
+        .get(app.api.course.findAll)
+        .post(app.api.course.save)
+
+    //Usuário X Curso
+    app.route('/users_courses/adm')
+        .post(app.api.user_course.saveIni)
+
+
+    //Tipo de Usuário
+    app.route('/usertypes/adm')
+        .get(app.api.usertype.findAll)
+        .post(app.api.usertype.save)
+
 
 }

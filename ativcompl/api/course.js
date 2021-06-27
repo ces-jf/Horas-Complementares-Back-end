@@ -9,6 +9,7 @@ module.exports = app => {
     const findById = (req, res) => {
         app.db('tb_courses')
             .where({ id: req.params.id })
+            .first()
             .then(course => res.json(course))
             .catch(err => res.status(400).json(err))
     }

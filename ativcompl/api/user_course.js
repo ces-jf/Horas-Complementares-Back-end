@@ -17,7 +17,7 @@ module.exports = app => {
     const findUserCourse = (req, res) => {
         app.db('tb_users_courses as uc')
             .join('tb_courses as c', 'uc.courseId', '=', 'c.id')
-            .select('uc.id', 'c.name')
+            .select('uc.id', 'c.name', 'c.limit')
             .where({ userId: req.user.id })
             .then(userCourse => res.json(userCourse))
             .catch(err => res.status(400).json(err))
@@ -26,6 +26,14 @@ module.exports = app => {
     const save = (req, res) => {
 
         req.body.userId = req.user.id
+
+        app.db('tb_users_courses')
+            .insert(req.body)
+            .then(_ => res.status(204).send())
+            .catch(err => res.status(400).json(err))
+    }
+
+    const saveIni = (req, res) => {
 
         app.db('tb_users_courses')
             .insert(req.body)
@@ -64,5 +72,5 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { findAll, findById, findUserCourse, save, remove, updateCourse, updateUserType }
+    return { findAll, findById, findUserCourse, save, saveIni, remove, updateCourse, updateUserType }
 }
