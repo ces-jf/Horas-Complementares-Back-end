@@ -88,6 +88,29 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
+    const updateActivityCertificate = (req, res, certificate) => {
+        app.db('tb_activities')
+            .where({ id: req.params.id, userId: req.user.id })
+            .update({ certificate })
+            .then(_ => res.status(204).send())
+            .catch(err => res.status(400).json(err))
+    }
+
+    const certificateActivity = (req, res) => {
+        app.db('tb_activities')
+            .where({ id: req.params.id, userId: req.user.id })
+            .first()
+            .then(activity => {
+                if (!activity) {
+                    const msg = `Atividade com id ${req.params.id} não encontrada.`
+                    return res.status(400).send(msg)
+                }
+
+                updateActivityCertificate(req, res, req.body.certificate)
+            })
+            .catch(err => res.status(400).json(err))
+    }
+
     const findAllTeste = (req, res) => {
         app.db('tb_activities')
             .orderBy('start')
@@ -108,5 +131,16 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { findAll, findById, findWorkloadCompleted, findAllDeadline, save, remove, toggleActivity, findAllTeste, saveTeste }
+    return { 
+        findAll, 
+        findById, 
+        findWorkloadCompleted, 
+        findAllDeadline, 
+        save, 
+        remove, 
+        toggleActivity, 
+        certificateActivity, 
+        findAllTeste, 
+        saveTeste 
+    }
 }

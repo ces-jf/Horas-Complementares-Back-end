@@ -21,6 +21,11 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(app.api.activity.toggleActivity)
 
+    app.route('/activities/:id/certificate')
+        .all(app.config.passport.authenticate())
+        .put(app.api.activity.certificateActivity)
+
+
     app.route('/activitiesworkload')
         .all(app.config.passport.authenticate())
         .get(app.api.activity.findWorkloadCompleted)
