@@ -1,4 +1,4 @@
-const { authSecret } = require('../.env')
+const { authSecret } = require('../../.env')
 const jwt = require('jwt-simple')
 const bcrypt = require('bcrypt-nodejs')
 
@@ -10,6 +10,11 @@ module.exports = app => {
 
         const user = await app.db('tb_users')
             .where({ registration: req.body.registration })
+            .first()
+
+        const userCourse = await app.db('tb_users_courses')
+            .select('id')
+            .where({ userId: user.id })
             .first()
 
         if (user) {
@@ -26,6 +31,7 @@ module.exports = app => {
                     email: user.email,
                     usertypeId: user.usertypeId,
                     token: jwt.encode(payload, authSecret),
+                    userCourse: userCourse
                 })
             })
         } else {

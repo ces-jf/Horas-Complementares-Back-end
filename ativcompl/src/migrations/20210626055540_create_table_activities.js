@@ -6,6 +6,7 @@ exports.up = (knex) => {
         table.datetime('start').notNull()
         table.datetime('end')
         table.double('workload').notNull()
+        table.double('workloadValidated')
         table.boolean('completed')
         table.string('certificate')
         table.bigint('userId')

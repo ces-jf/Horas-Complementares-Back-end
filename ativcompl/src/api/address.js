@@ -17,6 +17,15 @@ module.exports = app => {
     const findByUserId = (req, res) => {
         app.db('tb_addresses')
             .where({ userId: req.user.id })
+            .first()
+            .then(addresses => res.json(addresses))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findMail = (req, res) => {
+        app.db('tb_addresses')
+            .where({ userId: req.user.id })
+            .first()
             .then(addresses => res.json(addresses))
             .catch(err => res.status(400).json(err))
     }
@@ -66,5 +75,5 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { findAll, findById, findByUserId, save, remove, update }
+    return { findAll, findById, findByUserId, findMail, save, remove, update }
 }

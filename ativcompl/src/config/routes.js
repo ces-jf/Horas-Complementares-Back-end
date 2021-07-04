@@ -25,10 +25,29 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(app.api.activity.certificateActivity)
 
+    app.route('/activities/:id/valuations')
+        .all(app.config.passport.authenticate())
+        .put(app.api.activity.valuationActivity)
 
     app.route('/activitiesworkload')
         .all(app.config.passport.authenticate())
         .get(app.api.activity.findWorkloadCompleted)
+
+    app.route('/activities/:userId/:courseId')
+        .all(app.config.passport.authenticate())
+        .put(app.api.activity.findWorkloadValitedByCourse)
+
+    app.route('/activities/:courseId/courses/:userId/users')
+        .all(app.config.passport.authenticate())
+        .get(app.api.activity.findUser)
+
+    app.route('/activities/:courseId/course')
+        .all(app.config.passport.authenticate())
+        .get(app.api.activity.findMail)
+
+    app.route('/activities/:courseId/workloadValidate')
+        .all(app.config.passport.authenticate())
+        .get(app.api.activity.findWorkloadValidatedMail)
 
     app.route('/activities/:id/date')
         .all(app.config.passport.authenticate())
@@ -61,6 +80,10 @@ module.exports = app => {
     app.route('/address')
         .all(app.config.passport.authenticate())
         .get(app.api.address.findByUserId)
+
+    app.route('/address_mail')
+        .all(app.config.passport.authenticate())
+        .get(app.api.address.findMail)
 
     //Cursos
     app.route('/courses')
@@ -98,6 +121,10 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(app.api.user_course.updateUserType)
 
+    app.route('/users_courses_mail')
+        .all(app.config.passport.authenticate())
+        .get(app.api.user_course.findMail)
+
     //Tipo de Usuário
     app.route('/usertypes')
         .all(app.config.passport.authenticate())
@@ -115,11 +142,44 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .get(app.api.profile.findAll)
 
+    app.route('/profile_mail')
+        .all(app.config.passport.authenticate())
+        .get(app.api.profile.findMail)
+
     app.route('/profile/:id')
         .all(app.config.passport.authenticate())
         .get(app.api.profile.find)
         .put(app.api.profile.update)
         .put(app.api.profile.updatePassword)
+
+    app.route('/profileusertype')
+        .all(app.config.passport.authenticate())
+        .get(app.api.profile.findUserType)
+
+    //Avaliação
+    app.route('/valuations')
+        .all(app.config.passport.authenticate())
+        .post(app.api.valuation.save)
+
+    //Notificações
+    app.route('/notifications')
+        .all(app.config.passport.authenticate())
+        .post(app.api.notification.save)
+        .get(app.api.notification.findAll)
+
+    app.route('/notifications/:id/read')
+        .all(app.config.passport.authenticate())
+        .put(app.api.notification.readNotification)
+
+    app.route('/notificationscount')
+        .all(app.config.passport.authenticate())
+        .get(app.api.notification.findCount)
+
+    app.route('/sendmail')
+        .all(app.config.passport.authenticate())
+        .get(app.api.sendmail.sendEmail)
+        .post(app.api.sendmail.sendEmail)
+
 
 
     //Rotas do Administrador do Sistema

@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
-const db = require('./config/db')
+const db = require('./src/config/db')
 const consign = require('consign')
 
-consign()
+consign({ cwd: 'src', verbose: false })
     .include('./config/passport.js')
     .then('./config/middlewares.js')
     .then('./api')

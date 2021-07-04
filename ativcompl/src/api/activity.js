@@ -4,7 +4,39 @@ module.exports = app => {
     const findWorkloadCompleted = (req, res) => {
         app.db('tb_activities')
             .where({ userId: req.user.id })
-            .sum('workload')
+            .sum('workloadValidated')
+            .then(activities => res.json(activities))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findWorkloadValidatedMail = (req, res) => {
+        app.db('tb_activities')
+            .where({ userId: req.user.id, courseId: req.params.courseId })
+            .sum('workloadValidated')
+            .then(activities => res.json(activities))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findWorkloadValitedByCourse = (req, res) => {
+        app.db('tb_activities')
+            .where({ userId: req.params.userId, courseId: req.params.courseId })
+            .sum('workloadValidated')
+            .then(activities => res.json(activities))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findUser = (req, res) => {
+        app.db('tb_activities')
+            .where({ userId: req.params.userId, courseId: req.params.courseId })
+            .orderBy('start')
+            .then(activities => res.json(activities))
+            .catch(err => res.status(400).json(err))
+    }
+
+    const findMail = (req, res) => {
+        app.db('tb_activities')
+            .where({ userId: req.user.id, courseId: req.params.courseId })
+            .orderBy('end')
             .then(activities => res.json(activities))
             .catch(err => res.status(400).json(err))
     }
@@ -28,11 +60,12 @@ module.exports = app => {
             .then(activities => res.json(activities))
             .catch(err => res.status(400).json(err))
     }
-
+ 
     const findById = (req, res) => {
         app.db('tb_activities')
-            .where({ id: req.params.id, userId: req.user.id })
-            .then(categories => res.json(categories))
+            .where({ id: req.params.id })
+            .first()
+            .then(activity => res.json(activity))
             .catch(err => res.status(400).json(err))
     }
 
@@ -111,6 +144,32 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
+    const updateActivityValuation = (req, res, workloadValidated, completed) => {
+        app.db('tb_activities')
+        .where({ id: req.params.id })
+        .update({ 
+            workloadValidated,
+            completed 
+        })
+        .then(_ => res.status(204).send())
+        .catch(err => res.status(400).json(err))
+    }
+
+    const valuationActivity = (req, res) => {
+        app.db('tb_activities')
+            .where({ id: req.params.id })
+            .first()
+            .then(activity => {
+                if (!activity) {
+                    const msg = `Atividade com id ${req.params.id} não encontrada.`
+                    return res.status(400).send(msg)
+                }
+
+                updateActivityValuation(req, res, req.body.workloadValidated, req.body.completed)
+            })
+            .catch(err => res.status(400).json(err))
+    }
+
     const findAllTeste = (req, res) => {
         app.db('tb_activities')
             .orderBy('start')
@@ -135,11 +194,16 @@ module.exports = app => {
         findAll, 
         findById, 
         findWorkloadCompleted, 
+        findWorkloadValitedByCourse,
+        findUser,
         findAllDeadline, 
+        findMail,
+        findWorkloadValidatedMail,
         save, 
         remove, 
         toggleActivity, 
         certificateActivity, 
+        valuationActivity,
         findAllTeste, 
         saveTeste 
     }

@@ -23,6 +23,16 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
+    const findMail = (req, res) => {
+        app.db('tb_users_courses as uc')
+            .join('tb_courses as c', 'uc.courseId', '=', 'c.id')
+            .select('uc.id', 'c.name', 'c.workload')
+            .where({ courseId: req.params.courseId, userId: req.user.id })
+            .first()
+            .then(userCourse => res.json(userCourse))
+            .catch(err => res.status(400).json(err))
+    }
+
     const save = (req, res) => {
 
         req.body.userId = req.user.id
@@ -72,5 +82,5 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { findAll, findById, findUserCourse, save, saveIni, remove, updateCourse, updateUserType }
+    return { findAll, findById, findUserCourse, findMail, save, saveIni, remove, updateCourse, updateUserType }
 }
