@@ -41,7 +41,7 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .get(app.api.activity.findUser)
 
-    app.route('/activities/:courseId/course')
+    app.route('/activities/:courseId/course_mail')
         .all(app.config.passport.authenticate())
         .get(app.api.activity.findMail)
 
@@ -97,9 +97,6 @@ module.exports = app => {
         .delete(app.api.course.remove)
         .put(app.api.course.update)
 
-    app.route('/courses/campus/:id')
-        .all(app.config.passport.authenticate())
-        .get(app.api.course.findByCampus)
 
     //Usuário X Curso
     app.route('/users_courses')
@@ -177,7 +174,7 @@ module.exports = app => {
 
     app.route('/sendmail')
         .all(app.config.passport.authenticate())
-        .get(app.api.sendmail.sendEmail)
+        // .get(app.api.sendmail.sendEmail)
         .post(app.api.sendmail.sendEmail)
 
 

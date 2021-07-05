@@ -4,9 +4,6 @@ const ejs = require('ejs')
 const moment = require('moment')
 moment.locale('pt-br');
 
-const userDb = require('./profile')
-
-
 const email = (
     '<body style="margin: 0; padding: 0;">' +
     '<table align="center" border="0.5" cellpadding="0" cellspacing="15px" width="90%" style="border-collapse: collapse;">' +
@@ -109,148 +106,7 @@ const email = (
     '</body>'
 )
 
-module.exports = app => {
-
-    // const address = {
-        // id: 1,
-        // street: "Rua das Angélicas",
-        // number: "20",
-        // district: "N. Sra. das Graças",
-        // city: "Lima Duarte",
-        // fone: "(32)99838-9166",
-    // }
-
-    // const address = (req, res) => {
-    //     app.db('tb_addresses')
-    //         .where({ userId: req.user.id })
-    //         .first()
-    //         .then(addresses => res.json(addresses))
-    //         .catch(err => res.status(400).json(err))
-    // }
-
-    // const users = {
-    //     id: 1,
-    //     name: "Paulo Toledo",
-    //     email: "ptoledo.bsices@gmail.com",
-    // }
-
-    // const users = (req, res) => {
-    //     app.db('tb_users')
-    //         .where({ id: req.user.id })
-    //         .first()
-    //         .select('id', 'name', 'email')
-    //         .then(user => {
-    //             res.json(user)
-    //             return user
-    //         })
-    //         .catch(err => res.status(400).json(err)
-    //         )
-    // }
-
-
-    // const course = {
-    //     id: 1,
-    //     name: "Sistemas de Informação",
-    //     workload: 216
-    // }
-
-    // TODO >> Enviar o curso por parâmetro (usuários com mais de um curso)
-    // const course = (req, res) => {
-    //     app.db('tb_users_courses as uc')
-    //         .join('tb_courses as c', 'uc.courseId', '=', 'c.id')
-    //         .select('uc.id', 'c.name', 'c.workload')
-    //         .where({ courseId: req.params.courseId, userId: req.user.id })
-    //         .then(userCourse => res.json(userCourse))
-    //         .catch(err => res.status(400).json(err))
-    // }
-
-    // const activities = [
-    //     {
-    //         id: 1,
-    //         institution: "CES/JF",
-    //         name: "XXIV Semana de Informática",
-    //         start: "2014-06-10T00:00:00.000Z",
-    //         end: "2014-10-10T00:00:00.000Z",
-    //         workloadValidated: 15,
-    //         certificate: "https://drive.google.com/file/d/1GcO_3NXmMKwmqVlK1UIuiL99mF1vMd2f/view?usp=sharing",
-    //     }, {
-    //         id: 2,
-    //         institution: "Udemy",
-    //         name: "Curso API REST em Node.JS aplicando testes (TDD)dêmica",
-    //         start: "2020-05-20T00:00:00.000Z",
-    //         end: "2020-06-11T00:00:00.000Z",
-    //         workloadValidated: 15.5,
-    //         certificate: "https://udemy-certificate.s3.amazonaws.com/image/UC-27e8929b-a26f-4464-af05-f714237d15e5.jpg",
-    //     }
-    // ]
-
-    // const activities = (req, res) => {
-    //     app.db('tb_activities')
-    //         .where({ userId: req.user.id, courseId: req.params.courseId })
-    //         .orderBy('start')
-    //         .then(activities => res.json(activities))
-    //         .catch(err => res.status(400).json(err))
-    // }
-
-
-    // const addressStr = (address) => {
-    //     return (address.street +
-    //         ", " + address.number +
-    //         " - " + address.district +
-    //         " - " + address.city)
-    // }
-
-
-
-    // const user = {
-    //     id: users.id,
-    //     name: users.name,
-    //     email: users.email,
-    //     address: addressStr,
-    //     fone: address.fone,
-    // }
-
-
-    // const totalWorkload = activities.reduce((a, c) => a.workloadValidated + c.workloadValidated)
-
-    // const totalWorkload = (req, res) => {
-    //     app.db('tb_activities')
-    //         .where({ userId: req.user.id, courseId: req.params.courseId })
-    //         .sum('workloadValidated')
-    //         .then(activities => res.json(activities))
-    //         .catch(err => res.status(400).json(err))
-    // }
-
-    
-    
-
-    // const sendEmailPost = (req, res) => {
-    //     datas = {
-    //         user: req.body.user,
-    //         course: req.body.course,
-    //         activities: req.body.activities,
-    //         totalWorkload: req.body.totalWorkload,
-    //         currentYear: currentYear,
-    //         today: moment(new Date()).format('LL'),
-    //         formatDate,
-    //         upperCase
-    //     }
-    // }
-
-    // const datas = {
-    //     user,
-    //     course,
-    //     activities: activities,
-    //     totalWorkload: totalWorkload,
-    //     currentYear: currentYear,
-    //     today: moment(new Date()).format('LL'),
-    //     formatDate,
-    //     upperCase
-    // }
-
-
-
-    
+module.exports = app => {  
 
     const currentYear = moment(new Date()).format('YYYY')
 
@@ -261,7 +117,6 @@ module.exports = app => {
     const formatDate = (date) => {
         return moment(new Date(date)).format('DD/MM/YYYY')
     }
-
 
     const sendEmail = async (req, res) => {
 
