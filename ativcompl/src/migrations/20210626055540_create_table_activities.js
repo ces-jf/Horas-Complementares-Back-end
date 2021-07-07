@@ -3,6 +3,7 @@ exports.up = (knex) => {
     return knex.schema.createTable('tb_activities', table => {
         table.increments('id').primary()
         table.string('name').notNull()
+        table.string('institution').notNull()
         table.datetime('start').notNull()
         table.datetime('end')
         table.double('workload').notNull()

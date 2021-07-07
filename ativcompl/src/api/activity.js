@@ -60,7 +60,7 @@ module.exports = app => {
             .then(activities => res.json(activities))
             .catch(err => res.status(400).json(err))
     }
- 
+
     const findById = (req, res) => {
         app.db('tb_activities')
             .where({ id: req.params.id })
@@ -69,17 +69,46 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    const save = (req, res) => {
+    const save = async (req, res) => {
         if (!req.body.name.trim()) {
             return res.status(400).send('O nome da atividade é um campo obrigatório')
         }
 
         req.body.userId = req.user.id
+        req.body.workloadValidated = 0
 
-        app.db('tb_activities')
-            .insert(req.body)
-            .then(_ => res.status(204).send())
+        const result = await app.db('tb_activities')
+            .insert({
+                name: req.body.name,
+                institution: req.body.institution,
+                start: req.body.start,
+                end: req.body.end,
+                workload: req.body.workload,
+                workloadValidated: req.body.workloadValidated,
+                completed: req.body.completed,
+                certificate: req.body.certificate,
+                categoryId: req.body.categoryId,
+                courseId: req.body.courseId,
+                userId: req.body.userId
+            }, '*')
+            .then(result => {
+                res.status(204).json(result)
+                return result
+            })
             .catch(err => res.status(400).json(err))
+
+        const activityId = await result[0].id
+
+        await app.db('tb_notifications')
+            .insert({
+                userSendId: req.body.userId,
+                userRecipientId: req.body.userRecipientId,
+                activityId: activityId,
+                message: req.body.message,
+                read: req.body.read
+            })
+            .then(_ => res.status(204))
+            .catch(err => res.status(400)/* .json(err) */)
     }
 
     const remove = (req, res) => {
@@ -146,13 +175,13 @@ module.exports = app => {
 
     const updateActivityValuation = (req, res, workloadValidated, completed) => {
         app.db('tb_activities')
-        .where({ id: req.params.id })
-        .update({ 
-            workloadValidated,
-            completed 
-        })
-        .then(_ => res.status(204).send())
-        .catch(err => res.status(400).json(err))
+            .where({ id: req.params.id })
+            .update({
+                workloadValidated,
+                completed
+            })
+            .then(_ => res.status(204).send())
+            .catch(err => res.status(400).json(err))
     }
 
     const valuationActivity = (req, res) => {
@@ -190,21 +219,21 @@ module.exports = app => {
             .catch(err => res.status(400).json(err))
     }
 
-    return { 
-        findAll, 
-        findById, 
-        findWorkloadCompleted, 
+    return {
+        findAll,
+        findById,
+        findWorkloadCompleted,
         findWorkloadValitedByCourse,
         findUser,
-        findAllDeadline, 
+        findAllDeadline,
         findMail,
         findWorkloadValidatedMail,
-        save, 
-        remove, 
-        toggleActivity, 
-        certificateActivity, 
+        save,
+        remove,
+        toggleActivity,
+        certificateActivity,
         valuationActivity,
-        findAllTeste, 
-        saveTeste 
+        findAllTeste,
+        saveTeste
     }
 }
